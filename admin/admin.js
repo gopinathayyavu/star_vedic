@@ -37,14 +37,14 @@ const ALL_COURSES = [
 ];
 
 const STUDENTS = [
-    { id: 1, name: "Priya Sharma", phone: "9876543210", enrolled: ["Yoga", "Bharatanatyam", "Spoken English"], paid: true, joined: "May 2025" },
-    { id: 2, name: "Ananya Reddy", phone: "9988776655", enrolled: ["Zumba", "Saree Pre Pleating"], paid: true, joined: "May 2025" },
-    { id: 3, name: "Kavitha Rao", phone: "9123456789", enrolled: ["Carnatic Music", "Drawing Class"], paid: false, joined: "May 2025" },
-    { id: 4, name: "Meera Krishnan", phone: "8765432109", enrolled: ["PCOD Reverse", "Millet Recipes"], paid: true, joined: "April 2025" },
-    { id: 5, name: "Sita Devi", phone: "9000123456", enrolled: ["Kerala Mural", "Numerology"], paid: true, joined: "April 2025" },
-    { id: 6, name: "Lakshmi Prasad", phone: "9876501234", enrolled: ["Yoga", "Pranayama Yoga Mudras"], paid: false, joined: "May 2025" },
-    { id: 7, name: "Durga Patel", phone: "8900012345", enrolled: ["AI Tools & Graphics", "Chess Basics"], paid: true, joined: "May 2025" },
-    { id: 8, name: "Radha Nair", phone: "7890123456", enrolled: ["Chocolate Making & Baking Class"], paid: true, joined: "March 2025" }
+    { id: 1, name: "Priya Sharma", phone: "9876543210", enrolled: ["Yoga", "Bharatanatyam", "Spoken English"], paid: true, joined: "May 2026" },
+    { id: 2, name: "Ananya Reddy", phone: "9988776655", enrolled: ["Zumba", "Saree Pre Pleating"], paid: true, joined: "May 2026" },
+    { id: 3, name: "Kavitha Rao", phone: "9123456789", enrolled: ["Carnatic Music", "Drawing Class"], paid: false, joined: "May 2026" },
+    { id: 4, name: "Meera Krishnan", phone: "8765432109", enrolled: ["PCOD Reverse", "Millet Recipes"], paid: true, joined: "April 2026" },
+    { id: 5, name: "Sita Devi", phone: "9000123456", enrolled: ["Kerala Mural", "Numerology"], paid: true, joined: "April 2026" },
+    { id: 6, name: "Lakshmi Prasad", phone: "9876501234", enrolled: ["Yoga", "Pranayama Yoga Mudras"], paid: false, joined: "May 2026" },
+    { id: 7, name: "Durga Patel", phone: "8900012345", enrolled: ["AI Tools & Graphics", "Chess Basics"], paid: true, joined: "May 2026" },
+    { id: 8, name: "Radha Nair", phone: "7890123456", enrolled: ["Chocolate Making & Baking Class"], paid: true, joined: "March 2026" }
 ];
 
 const catColors = {
