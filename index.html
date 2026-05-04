@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Star Vedic Academy – Summer Camp</title>
+    <title>Star Vedic Academy – Summer Camp | Ancient Wisdom, Modern Learning</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap"
         rel="stylesheet" />
@@ -39,7 +39,19 @@
             overflow-x: hidden;
         }
 
-        /* NAV */
+        /* ========== SCROLL REVEAL ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== NAV ========== */
         nav {
             position: fixed;
             top: 0;
@@ -168,7 +180,7 @@
             background: rgba(45, 42, 94, 0.06);
         }
 
-        /* HERO */
+        /* ========== HERO ========== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -352,47 +364,23 @@
             transform: translateY(-2px);
         }
 
-        /* Hero visual */
+        /* Hero visual with image */
         .hero-visual {
+            position: relative;
             display: flex;
             justify-content: center;
-            align-items: center;
         }
 
-        .hero-card-stack {
-            position: relative;
-            width: 360px;
-            height: 420px;
-        }
-
-        .hcard {
-            position: absolute;
-            border-radius: 24px;
-            padding: 28px;
-            color: #fff;
+        .hero-img {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 32px;
             box-shadow: var(--shadow-lg);
+            transition: transform 0.4s;
+            animation: gentleFloat 6s ease-in-out infinite;
         }
 
-        .hcard1 {
-            background: linear-gradient(135deg, var(--primary), #5855A0);
-            width: 280px;
-            height: 340px;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-
-        .hcard2 {
-            background: linear-gradient(135deg, #F5A623, #F0880A);
-            width: 250px;
-            height: 300px;
-            top: 60px;
-            left: 90px;
-            z-index: 2;
-            animation: hcardFloat 4s ease-in-out infinite;
-        }
-
-        @keyframes hcardFloat {
+        @keyframes gentleFloat {
 
             0%,
             100% {
@@ -404,92 +392,7 @@
             }
         }
 
-        .hcard-icon {
-            font-size: 40px;
-            margin-bottom: 16px;
-            opacity: .9;
-        }
-
-        .hcard h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .hcard p {
-            font-size: 13px;
-            opacity: .85;
-            line-height: 1.5;
-        }
-
-        .hcard-stats {
-            display: flex;
-            gap: 16px;
-            margin-top: 20px;
-        }
-
-        .hstat {
-            text-align: center;
-        }
-
-        .hstat-n {
-            font-size: 22px;
-            font-weight: 800;
-        }
-
-        .hstat-l {
-            font-size: 10px;
-            opacity: .8;
-            text-transform: uppercase;
-            letter-spacing: .5px;
-        }
-
-        .floating-pill {
-            position: absolute;
-            background: #fff;
-            border-radius: 100px;
-            padding: 8px 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--primary);
-            box-shadow: var(--shadow);
-            z-index: 3;
-        }
-
-        .pill1 {
-            bottom: 30px;
-            left: -20px;
-            animation: pillFloat 3s ease-in-out infinite;
-        }
-
-        .pill2 {
-            top: 20px;
-            right: -10px;
-            animation: pillFloat 3s ease-in-out infinite .5s;
-        }
-
-        @keyframes pillFloat {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-6px);
-            }
-        }
-
-        .pill-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
-
-        /* STATS BAR */
+        /* ========== STATS BAR ========== */
         .stats-bar {
             background: var(--primary);
             padding: 32px 5%;
@@ -520,7 +423,7 @@
             margin-top: 4px;
         }
 
-        /* SECTION COMMON */
+        /* ========== SECTION COMMON ========== */
         section {
             padding: 80px 5%;
         }
@@ -557,7 +460,7 @@
             line-height: 1.7;
         }
 
-        /* FEATURES */
+        /* ========== FEATURES ========== */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -570,7 +473,7 @@
             border-radius: var(--radius);
             padding: 28px;
             box-shadow: var(--shadow);
-            transition: all .3s;
+            transition: all 0.3s;
             border: 1px solid rgba(45, 42, 94, 0.06);
         }
 
@@ -590,20 +493,7 @@
             margin-bottom: 18px;
         }
 
-        .feature-card h3 {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .feature-card p {
-            font-size: 13px;
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
-        /* CATEGORIES */
+        /* ========== CATEGORIES (with images) ========== */
         .categories {
             background: linear-gradient(135deg, #2D2A5E 0%, #3D3A7E 100%);
         }
@@ -623,8 +513,8 @@
 
         .cat-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 24px;
             margin-top: 50px;
         }
 
@@ -632,26 +522,43 @@
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: var(--radius);
-            padding: 28px 24px;
-            text-align: center;
-            transition: all .3s;
+            padding: 0;
+            transition: all 0.3s;
             cursor: pointer;
             backdrop-filter: blur(10px);
+            overflow: hidden;
         }
 
         .cat-card:hover {
             background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-6px);
+            transform: translateY(-8px);
             border-color: var(--gold);
+            box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.3);
+        }
+
+        .cat-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .cat-card:hover .cat-img {
+            transform: scale(1.05);
+        }
+
+        .cat-content {
+            padding: 20px 20px 24px;
+            text-align: center;
         }
 
         .cat-icon {
             font-size: 36px;
-            margin-bottom: 14px;
+            margin-bottom: 8px;
         }
 
         .cat-card h3 {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 700;
             color: #fff;
             margin-bottom: 6px;
@@ -659,7 +566,7 @@
 
         .cat-card p {
             font-size: 12px;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .cat-count {
@@ -668,16 +575,16 @@
             color: #fff;
             font-size: 11px;
             font-weight: 700;
-            padding: 3px 10px;
+            padding: 4px 12px;
             border-radius: 100px;
-            margin-top: 10px;
+            margin-top: 12px;
         }
 
-        /* COURSES PREVIEW */
+        /* ========== COURSES PREVIEW (with images) ========== */
         .courses-preview {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
             margin-top: 50px;
         }
 
@@ -686,7 +593,7 @@
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: all .3s;
+            transition: all 0.3s;
             border: 1px solid rgba(45, 42, 94, 0.06);
         }
 
@@ -695,20 +602,18 @@
             box-shadow: var(--shadow-lg);
         }
 
-        .cpc-header {
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
+        .cpc-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
         }
 
         .cpc-body {
-            padding: 18px 20px;
+            padding: 18px 20px 22px;
         }
 
         .cpc-body h4 {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 6px;
@@ -720,18 +625,19 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            margin-top: 6px;
         }
 
         .cpc-cat {
             font-size: 10px;
             font-weight: 600;
-            padding: 3px 10px;
+            padding: 4px 12px;
             border-radius: 100px;
             display: inline-block;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
-        /* PRICING */
+        /* ========== PRICING ========== */
         .pricing-box {
             background: #fff;
             border-radius: 28px;
@@ -794,11 +700,6 @@
             gap: 8px;
         }
 
-        .pricing-features li i {
-            color: var(--gold);
-            font-size: 16px;
-        }
-
         .upi-box {
             background: linear-gradient(135deg, rgba(45, 42, 94, 0.05), rgba(245, 166, 35, 0.05));
             border: 1px solid rgba(245, 166, 35, 0.3);
@@ -811,18 +712,13 @@
             gap: 12px;
         }
 
-        .upi-box span {
-            font-size: 13px;
-            color: var(--muted);
-        }
-
         .upi-box strong {
             font-size: 18px;
             font-weight: 800;
             color: var(--primary);
         }
 
-        /* FOOTER */
+        /* ========== FOOTER ========== */
         footer {
             background: #1A1A2E;
             color: rgba(255, 255, 255, 0.75);
@@ -845,43 +741,8 @@
             margin-bottom: 8px;
         }
 
-        .footer-brand p {
-            font-size: 14px;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .footer-col h4 {
-            font-size: 14px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: .5px;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-col ul li a {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 14px;
-            transition: color .2s;
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--gold);
-        }
-
         .footer-contact p {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
             margin-bottom: 8px;
             display: flex;
             align-items: center;
@@ -898,7 +759,6 @@
             padding-top: 24px;
             text-align: center;
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.4);
         }
 
         /* WHATSAPP FLOAT */
@@ -918,24 +778,11 @@
             font-size: 26px;
             text-decoration: none;
             box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            transition: all .3s;
+            transition: all 0.3s;
         }
 
         .wa-float:hover {
             transform: scale(1.1);
-        }
-
-        /* TOAST */
-        @keyframes slideInToast {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         /* RESPONSIVE */
@@ -987,7 +834,6 @@
 
 <body>
 
-    <!-- NAV -->
     <nav>
         <div class="nav-inner">
             <a class="logo" href="index.html">
@@ -1039,40 +885,9 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="hero-card-stack">
-                    <div class="hcard hcard1">
-                        <div class="hcard-icon">🧘</div>
-                        <h3>Star Vedic Academy</h3>
-                        <p>Ancient wisdom meets modern learning</p>
-                        <div class="hcard-stats">
-                            <div class="hstat">
-                                <div class="hstat-n">35+</div>
-                                <div class="hstat-l">Classes</div>
-                            </div>
-                            <div class="hstat">
-                                <div class="hstat-n">500+</div>
-                                <div class="hstat-l">Students</div>
-                            </div>
-                            <div class="hstat">
-                                <div class="hstat-n">5★</div>
-                                <div class="hstat-l">Rating</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hcard hcard2">
-                        <div class="hcard-icon">🎨</div>
-                        <h3>Summer Camp</h3>
-                        <p>All courses for just ₹280/month!</p>
-                    </div>
-                    <div class="floating-pill pill1">
-                        <div class="pill-dot" style="background:#4CAF50"></div>
-                        Live classes daily
-                    </div>
-                    <div class="floating-pill pill2">
-                        <i class="fas fa-certificate" style="color:var(--gold)"></i>
-                        Certificates included
-                    </div>
-                </div>
+                <img class="hero-img"
+                    src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&h=500&fit=crop"
+                    alt="Yoga and meditation" loading="lazy">
             </div>
         </div>
     </section>
@@ -1101,7 +916,7 @@
 
     <!-- FEATURES -->
     <section id="features">
-        <div class="section-inner">
+        <div class="section-inner reveal">
             <div class="section-tag"><i class="fas fa-sparkles"></i> Why Choose Us</div>
             <h2 class="section-title">Everything You Need to<br />Learn & Grow</h2>
             <p class="section-sub">From ancient arts to modern skills — Star Vedic Academy brings the best of both
@@ -1111,78 +926,150 @@
                     <div class="feat-icon" style="background:#EDE7FF;color:#7B1FA2"><i class="fas fa-user-tie"></i>
                     </div>
                     <h3>Expert Trainers</h3>
-                    <p>Learn from certified professionals with years of experience in their respective fields.</p>
+                    <p>Learn from certified professionals with years of experience.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feat-icon" style="background:#E8F5E9;color:#2E7D32"><i class="fas fa-certificate"></i>
                     </div>
                     <h3>Certificates</h3>
-                    <p>Earn recognized certificates on course completion to showcase your achievements.</p>
+                    <p>Earn recognized certificates on course completion.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feat-icon" style="background:#FFF3E0;color:#E65100"><i class="fas fa-laptop-code"></i>
                     </div>
                     <h3>Live Online Classes</h3>
-                    <p>Interactive live sessions via Zoom — learn from the comfort of your home, any time.</p>
+                    <p>Interactive Zoom sessions from the comfort of home.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feat-icon" style="background:#FCE4EC;color:#C62828"><i class="fas fa-heart"></i></div>
                     <h3>Fun & Engaging</h3>
-                    <p>Designed for all ages — kids, ladies, and adults alike enjoy every session.</p>
+                    <p>Designed for kids, ladies, and adults alike.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feat-icon" style="background:#E3F2FD;color:#1565C0"><i class="fas fa-infinity"></i>
                     </div>
                     <h3>All Access Pass</h3>
-                    <p>One flat fee of ₹280 unlocks access to every single course in our curriculum.</p>
+                    <p>One flat fee unlocks every single course.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feat-icon" style="background:#F3E5F5;color:#6A1B9A"><i class="fab fa-whatsapp"></i>
                     </div>
                     <h3>WhatsApp Community</h3>
-                    <p>Join our exclusive WhatsApp groups for updates, reminders, and peer support.</p>
+                    <p>Join our exclusive groups for updates and support.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CATEGORIES -->
+    <!-- CATEGORIES with images -->
     <section id="categories" class="categories">
-        <div class="section-inner">
+        <div class="section-inner reveal">
             <div class="section-tag"><i class="fas fa-th-large"></i> Course Categories</div>
             <h2 class="section-title">Explore Our 5 Learning Tracks</h2>
             <p class="section-sub">From Yoga at dawn to AI skills at dusk — there's something for everyone in the
                 family.</p>
             <div class="cat-grid">
                 <div class="cat-card" onclick="window.location.href='student/classes.html'">
-                    <div class="cat-icon">🏥</div>
-                    <h3>Health & Wellness</h3>
-                    <p>Yoga, Pranayama, Zumba, Flower Therapy & more</p>
-                    <div class="cat-count">7 classes</div>
+                    <img class="cat-img"
+                        src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=140&fit=crop"
+                        alt="Health & Wellness" loading="lazy">
+                    <div class="cat-content">
+                        <div class="cat-icon">🏥</div>
+                        <h3>Health & Wellness</h3>
+                        <p>Yoga, Pranayama, Zumba, Flower Therapy</p>
+                        <div class="cat-count">7 classes</div>
+                    </div>
                 </div>
                 <div class="cat-card" onclick="window.location.href='student/classes.html'">
-                    <div class="cat-icon">🎨</div>
-                    <h3>Arts & Culture</h3>
-                    <p>Dance, Music, Painting, Chess, AI Design & more</p>
-                    <div class="cat-count">10 classes</div>
+                    <img class="cat-img"
+                        src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=400&h=140&fit=crop"
+                        alt="Arts & Culture" loading="lazy">
+                    <div class="cat-content">
+                        <div class="cat-icon">🎨</div>
+                        <h3>Arts & Culture</h3>
+                        <p>Dance, Music, Painting, Chess, AI Design</p>
+                        <div class="cat-count">10 classes</div>
+                    </div>
                 </div>
                 <div class="cat-card" onclick="window.location.href='student/classes.html'">
-                    <div class="cat-icon">🗣️</div>
-                    <h3>Languages</h3>
-                    <p>Spoken English, Telugu Basics, Stories & more</p>
-                    <div class="cat-count">2 classes</div>
+                    <img class="cat-img"
+                        src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=140&fit=crop"
+                        alt="Languages" loading="lazy">
+                    <div class="cat-content">
+                        <div class="cat-icon">🗣️</div>
+                        <h3>Languages</h3>
+                        <p>Spoken English, Telugu Basics, Stories</p>
+                        <div class="cat-count">2 classes</div>
+                    </div>
                 </div>
                 <div class="cat-card" onclick="window.location.href='student/classes.html'">
-                    <div class="cat-icon">👩</div>
-                    <h3>Ladies Special</h3>
-                    <p>Saree styling, Beautician, Baking, Millet recipes</p>
-                    <div class="cat-count">5 classes</div>
+                    <img class="cat-img"
+                        src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&h=140&fit=crop"
+                        alt="Ladies Special" loading="lazy">
+                    <div class="cat-content">
+                        <div class="cat-icon">👩</div>
+                        <h3>Ladies Special</h3>
+                        <p>Saree styling, Beautician, Baking, Millet</p>
+                        <div class="cat-count">5 classes</div>
+                    </div>
                 </div>
                 <div class="cat-card" onclick="window.location.href='student/classes.html'">
-                    <div class="cat-icon">👶</div>
-                    <h3>Kids Classes</h3>
-                    <p>Music, Drawing, Dance, Chess, Storytelling & more</p>
-                    <div class="cat-count">10 classes</div>
+                    <img class="cat-img"
+                        src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=140&fit=crop"
+                        alt="Kids Classes" loading="lazy">
+                    <div class="cat-content">
+                        <div class="cat-icon">👶</div>
+                        <h3>Kids Classes</h3>
+                        <p>Music, Drawing, Dance, Chess, Storytelling</p>
+                        <div class="cat-count">10 classes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES PREVIEW (sample 4 courses) -->
+    <section>
+        <div class="section-inner reveal">
+            <div class="section-tag"><i class="fas fa-star"></i> Popular This Summer</div>
+            <h2 class="section-title">Trending Classes</h2>
+            <p class="section-sub">Join the most loved sessions – all included in ₹280/month</p>
+            <div class="courses-preview">
+                <div class="course-prev-card"><img class="cpc-img"
+                        src="https://images.unsplash.com/photo-1593811167562-9cef47bfa4e9?w=300&h=160&fit=crop"
+                        alt="Yoga">
+                    <div class="cpc-body">
+                        <h4>Yoga at Dawn</h4>
+                        <div class="cpc-time"><i class="fas fa-clock"></i> 5:00 AM</div><span class="cpc-cat"
+                            style="background:#E8F5E9;color:#2E7D32;">Health</span>
+                    </div>
+                </div>
+                <div class="course-prev-card"><img class="cpc-img"
+                        src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=300&h=160&fit=crop"
+                        alt="Bharatanatyam">
+                    <div class="cpc-body">
+                        <h4>Bharatanatyam</h4>
+                        <div class="cpc-time"><i class="fas fa-clock"></i> 12:00 PM</div><span class="cpc-cat"
+                            style="background:#E3F2FD;color:#1565C0;">Arts</span>
+                    </div>
+                </div>
+                <div class="course-prev-card"><img class="cpc-img"
+                        src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=300&h=160&fit=crop"
+                        alt="Spoken English">
+                    <div class="cpc-body">
+                        <h4>Spoken English</h4>
+                        <div class="cpc-time"><i class="fas fa-clock"></i> 3:00 PM</div><span class="cpc-cat"
+                            style="background:#FFF8E1;color:#E65100;">Languages</span>
+                    </div>
+                </div>
+                <div class="course-prev-card"><img class="cpc-img"
+                        src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=300&h=160&fit=crop"
+                        alt="Drawing for Kids">
+                    <div class="cpc-body">
+                        <h4>Drawing Fun</h4>
+                        <div class="cpc-time"><i class="fas fa-clock"></i> 2:00 PM</div><span class="cpc-cat"
+                            style="background:#FCE4EC;color:#C62828;">Kids</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1190,53 +1077,43 @@
 
     <!-- PRICING -->
     <section id="pricing">
-        <div class="section-inner" style="text-align:center;">
+        <div class="section-inner reveal" style="text-align:center;">
             <div class="section-tag" style="justify-content:center"><i class="fas fa-tag"></i> Simple Pricing</div>
             <h2 class="section-title">One Price. All Courses.</h2>
             <p class="section-sub" style="margin:0 auto 10px;">No hidden fees. No per-class charges. Just ₹280 per month
                 for unlimited access to everything.</p>
             <div class="pricing-box">
                 <div class="pricing-crown">🌟 Summer Special</div>
-                <div style="margin-top:20px;">
-                    <span class="pricing-amount">₹280</span>
-                    <span class="pricing-period"> / month</span>
-                </div>
+                <div style="margin-top:20px;"><span class="pricing-amount">₹280</span><span class="pricing-period"> /
+                        month</span></div>
                 <div class="pricing-note">All 35+ courses included · Certificates · Live Classes</div>
                 <ul class="pricing-features">
-                    <li><i class="fas fa-check-circle"></i> All 35+ Live Classes</li>
+                    <li><i class="fas fa-check-circle"></i> All Live Classes</li>
                     <li><i class="fas fa-check-circle"></i> Expert Trainers</li>
                     <li><i class="fas fa-check-circle"></i> Course Certificates</li>
                     <li><i class="fas fa-check-circle"></i> Recorded Sessions</li>
                     <li><i class="fas fa-check-circle"></i> WhatsApp Groups</li>
                     <li><i class="fas fa-check-circle"></i> Family Access</li>
                 </ul>
-                <div class="upi-box">
-                    <i class="fas fa-mobile-alt" style="color:var(--primary);font-size:20px;"></i>
-                    <div>
-                        <span>Pay via UPI (PhonePe / GPay / Any UPI)</span><br />
-                        <strong>UPI ID: 8309747374</strong>
+                <div class="upi-box"><i class="fas fa-mobile-alt" style="color:var(--primary);font-size:20px;"></i>
+                    <div><span>Pay via UPI (PhonePe / GPay / Any UPI)</span><br /><strong>UPI ID: 8309747374</strong>
                     </div>
                 </div>
                 <a href="student/index.html" class="btn btn-primary"
-                    style="width:100%;justify-content:center;font-size:16px;padding:16px;">
-                    <i class="fas fa-rocket"></i> Join the Summer Camp Now
-                </a>
-                <p style="font-size:13px;color:var(--muted);margin-top:16px;">
-                    Questions? Call or WhatsApp: <a href="tel:9155558584"
-                        style="color:var(--primary);font-weight:600;">9155558584</a>
-                </p>
+                    style="width:100%;justify-content:center;padding:16px;"><i class="fas fa-rocket"></i> Join the
+                    Summer Camp Now</a>
+                <p style="font-size:13px;color:var(--muted);margin-top:16px;">Questions? Call or WhatsApp: <a
+                        href="tel:9155558584" style="color:var(--primary);font-weight:600;">9155558584</a></p>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-inner">
             <div class="footer-brand">
                 <h3>⭐ Star Vedic Academy</h3>
                 <p>Bringing the richness of ancient Indian arts, wellness, and culture to modern learners across the
-                    globe.</p>
-                <br />
+                    globe.</p><br />
                 <div class="footer-contact">
                     <p><i class="fas fa-phone"></i> <a href="tel:9155558584">9155558584</a></p>
                     <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/919155558584">WhatsApp Us</a></p>
@@ -1264,19 +1141,16 @@
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            © 2025 Star Vedic Academy. All rights reserved. · Summer Camp · Learn, Grow & Shine with Ancient Wisdom
-        </div>
+        <div class="footer-bottom">© 2025 Star Vedic Academy. All rights reserved. · Summer Camp · Learn, Grow & Shine
+            with Ancient Wisdom</div>
     </footer>
 
-    <a href="https://wa.me/919155558584" class="wa-float" target="_blank" title="WhatsApp Us">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/919155558584" class="wa-float" target="_blank" title="WhatsApp Us"><i
+            class="fab fa-whatsapp"></i></a>
 
     <script>
-        function toggleMenu() {
-            document.getElementById('mobileMenu').classList.toggle('open');
-        }
+        // Mobile menu toggle
+        function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
@@ -1284,6 +1158,12 @@
                 if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
             });
         });
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        reveals.forEach(r => observer.observe(r));
     </script>
 </body>
 
