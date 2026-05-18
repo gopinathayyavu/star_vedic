@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Star Vedic Academy – Ancient Wisdom, Modern Approach</title>
+    <meta name="description"
+        content="Learn about Star Vedic Academy – our mission, master teachers, holistic philosophy, and commitment to blending Vedic tradition with modern learning.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F2C23',
+                        accent: '#F28C28',
+                        cream: '#FFF9F0',
+                        beige: '#F5EFE6',
+                        dark: '#1E1E1E',
+                        gold: '#D4AF37',
+                        deepgreen: '#1A3F34',
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display', 'Cormorant Garamond', 'serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        body {
+            background: #FFF9F0;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+        }
+
+        .glass-nav {
+            background: rgba(15, 44, 35, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-gold {
+            background: linear-gradient(105deg, #D4AF37, #F28C28);
+            color: #0F2C23;
+            font-weight: 700;
+            border-radius: 60px;
+            padding: 12px 28px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 18px -5px rgba(210, 180, 55, 0.3);
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            max-width: 100%;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 28px -8px rgba(242, 140, 40, 0.45);
+        }
+
+        .btn-outline-premium {
+            background: transparent;
+            border: 2px solid #D4AF37;
+            color: #D4AF37;
+            border-radius: 60px;
+            padding: 10px 24px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            max-width: 100%;
+        }
+
+        .btn-outline-premium:hover {
+            background: #D4AF37;
+            color: #0F2C23;
+        }
+
+        .premium-card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            overflow: hidden;
+            height: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .premium-card {
+                border-radius: 2rem;
+            }
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .premium-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 30px 50px -12px rgba(15, 44, 35, 0.15);
+                border-color: rgba(242, 140, 40, 0.3);
+            }
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background: #D4AF37;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 6px;
+        }
+
+        /* Mobile menu */
+        #mobileMenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+            opacity: 0;
+            background: rgba(15, 44, 35, 0.98);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        #mobileMenu.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        #mobileMenuBtn.active .hamburger-line:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        #mobileMenuBtn.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        #mobileMenuBtn.active .hamburger-line:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        section {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+    </style>
+</head>
+
+<body class="bg-cream overflow-x-hidden max-w-full">
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300 py-3 lg:py-4">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 z-50 flex-shrink-0">
+                <div class="w-8 h-8 lg:w-10 lg:h-10 bg-gold rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-om text-primary text-sm lg:text-lg"></i>
+                </div>
+                <span class="font-display text-lg lg:text-2xl font-bold text-white tracking-wide">STAR VEDIC</span>
+            </a>
+
+            <!-- Desktop links -->
+            <div class="hidden lg:flex items-center gap-6 xl:gap-8">
+                <a href="index.html" class="text-white/80 hover:text-gold text-sm transition">Home</a>
+                <a href="courses.html" class="text-white/80 hover:text-gold text-sm transition">Courses</a>
+                <a href="mycourses.html" class="text-white/80 hover:text-gold text-sm transition">My Courses</a>
+                <a href="about.html" class="text-gold font-medium text-sm transition">About</a>
+                <a href="contact.html" class="text-white/80 hover:text-gold text-sm transition">Contact</a>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-3 xl:gap-4 flex-shrink-0">
+                <a href="signin.html" class="btn-gold text-sm px-5 py-2 shadow-md">Sign In</a>
+            </div>
+
+            <button id="mobileMenuBtn"
+                class="lg:hidden flex flex-col gap-1.5 p-2 z-50 cursor-pointer bg-transparent border-none"
+                aria-label="Toggle menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+        <div id="mobileMenu" class="lg:hidden">
+            <div class="flex flex-col gap-1 px-4 sm:px-6 pb-4 pt-1">
+                <a href="index.html"
+                    class="text-white/90 hover:text-gold text-base py-2.5 border-b border-white/10">Home</a>
+                <a href="courses.html"
+                    class="text-white/80 hover:text-gold text-base py-2.5 border-b border-white/10">Courses</a>
+                <a href="mycourses.html"
+                    class="text-white/80 hover:text-gold text-base py-2.5 border-b border-white/10">My Courses</a>
+                <a href="about.html" class="text-gold font-medium text-base py-2.5 border-b border-white/10">About</a>
+                <a href="contact.html"
+                    class="text-white/80 hover:text-gold text-base py-2.5 border-b border-white/10">Contact</a>
+                <a href="signin.html" class="btn-gold text-base px-6 py-3 shadow-md text-center mt-2">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section
+        class="relative pt-24 pb-20 sm:pt-32 sm:pb-28 lg:pt-40 lg:pb-36 bg-gradient-to-br from-primary via-deepgreen to-primary overflow-hidden">
+        <div
+            class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1200&q=80')] bg-cover bg-center">
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center">
+            <h1 data-aos="fade-up" data-aos-delay="100"
+                class="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white mt-5 leading-tight">
+                About <span class="text-gold">Star Vedic Academy</span>
+            </h1>
+            <p data-aos="fade-up" data-aos-delay="200"
+                class="text-white/70 text-base sm:text-lg max-w-2xl mx-auto mt-4 sm:mt-6">
+                Where ancient wisdom meets modern learning — empowering lives through holistic education since our
+                inception.
+            </p>
+        </div>
+    </section>
+
+    <!-- ========== OUR PHILOSOPHY ========== -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 bg-cream">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div data-aos="fade-right">
+                    <span class="text-gold font-bold text-sm bg-gold/10 px-4 py-1.5 rounded-full">🌿 Our
+                        Philosophy</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-dark mt-4 leading-tight">
+                        Blending Vedic Heritage<br>with <span class="text-gold">Contemporary Vision</span>
+                    </h2>
+                    <div class="w-20 h-1 bg-gold mt-5 mb-6"></div>
+                    <p class="text-dark/70 text-base sm:text-lg leading-relaxed mb-4">
+                        Star Vedic Academy was born from a deep reverence for the timeless knowledge of the Vedas and a
+                        passion to make it accessible to today’s generation. We believe that true education nourishes
+                        the mind, body, and spirit.
+                    </p>
+                    <p class="text-dark/70 text-base sm:text-lg leading-relaxed">
+                        Our curriculum is carefully designed by master practitioners who have spent decades in their
+                        respective fields — from yogic sciences and Ayurveda to music, languages, and emotional
+                        wellness. Every program is an invitation to transform, heal, and flourish.
+                    </p>
+                </div>
+                <div data-aos="fade-left" class="relative">
+                    <img src="https://images.unsplash.com/photo-1604881988758-f76ad2f7aac1?w=600&q=85"
+                        class="rounded-3xl shadow-2xl w-full h-80 sm:h-96 object-cover" alt="Vedic learning environment"
+                        loading="lazy">
+                    <div
+                        class="absolute -bottom-5 -left-5 bg-gold text-primary font-bold px-6 py-3 rounded-2xl shadow-lg text-sm">
+                        🌟 40+ Years of combined wisdom
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== MISSION & VISION ========== -->
+    <section class="py-16 sm:py-20 bg-beige/60 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-10">
+                <div class="premium-card p-6 sm:p-8 flex flex-col" data-aos="fade-up">
+                    <div class="w-14 h-14 bg-gold/20 rounded-full flex items-center justify-center mb-5">
+                        <i class="fas fa-bullseye text-2xl text-gold"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold text-dark mb-3">Our Mission</h3>
+                    <p class="text-dark/70 text-sm sm:text-base flex-1">
+                        To provide transformative holistic education that integrates ancient Vedic sciences with modern
+                        tools, helping individuals of all ages achieve physical vitality, emotional balance, and
+                        spiritual growth.
+                    </p>
+                    <ul class="mt-4 space-y-2 text-dark/60 text-sm">
+                        <li><i class="fas fa-check-circle text-gold mr-2"></i> 40+ premium courses</li>
+                        <li><i class="fas fa-check-circle text-gold mr-2"></i> Expert-led, hands-on learning</li>
+                        <li><i class="fas fa-check-circle text-gold mr-2"></i> Accessible for kids, adults, and seniors
+                        </li>
+                    </ul>
+                </div>
+                <div class="premium-card p-6 sm:p-8 flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-gold/20 rounded-full flex items-center justify-center mb-5">
+                        <i class="fas fa-eye text-2xl text-gold"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold text-dark mb-3">Our Vision</h3>
+                    <p class="text-dark/70 text-sm sm:text-base flex-1">
+                        To build a global community where every individual can reconnect with their inner wisdom, live
+                        in harmony with nature, and contribute to a more conscious world — one course, one healing, one
+                        breath at a time.
+                    </p>
+                    <div class="mt-4 flex gap-3">
+                        <span class="bg-gold/10 text-gold text-xs px-3 py-1 rounded-full">Global Outreach</span>
+                        <span class="bg-gold/10 text-gold text-xs px-3 py-1 rounded-full">Certified Programs</span>
+                        <span class="bg-gold/10 text-gold text-xs px-3 py-1 rounded-full">Lifetime Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CORE VALUES ========== -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 bg-white/90">
+        <div class="max-w-7xl mx-auto text-center mb-12" data-aos="fade-up">
+            <span class="text-gold text-sm tracking-widest bg-gold/5 px-5 py-2 rounded-full">Core Values</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-dark mt-4">The Pillars of Our Academy</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <div class="premium-card p-5 sm:p-6 text-center" data-aos="zoom-in">
+                <i class="fas fa-hands-helping text-3xl text-gold mb-3"></i>
+                <h4 class="font-display text-xl font-bold text-primary">Authenticity</h4>
+                <p class="text-dark/60 text-sm mt-2">Pure teachings passed down through genuine guru-shishya tradition.
+                </p>
+            </div>
+            <div class="premium-card p-5 sm:p-6 text-center" data-aos="zoom-in" data-aos-delay="100">
+                <i class="fas fa-heart text-3xl text-gold mb-3"></i>
+                <h4 class="font-display text-xl font-bold text-primary">Compassion</h4>
+                <p class="text-dark/60 text-sm mt-2">Every student is nurtured with patience, love, and individual
+                    attention.</p>
+            </div>
+            <div class="premium-card p-5 sm:p-6 text-center" data-aos="zoom-in" data-aos-delay="200">
+                <i class="fas fa-brain text-3xl text-gold mb-3"></i>
+                <h4 class="font-display text-xl font-bold text-primary">Holistic Growth</h4>
+                <p class="text-dark/60 text-sm mt-2">Integrating body, mind, emotions, and spirit into every lesson.</p>
+            </div>
+            <div class="premium-card p-5 sm:p-6 text-center" data-aos="zoom-in" data-aos-delay="300">
+                <i class="fas fa-globe-americas text-3xl text-gold mb-3"></i>
+                <h4 class="font-display text-xl font-bold text-primary">Inclusivity</h4>
+                <p class="text-dark/60 text-sm mt-2">Open to all ages, backgrounds, and levels — from beginners to
+                    advanced seekers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== OUR MASTERS (TEAM) ========== -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 bg-cream">
+        <div class="max-w-7xl mx-auto text-center mb-12" data-aos="fade-up">
+            <span class="text-gold text-sm bg-gold/10 px-5 py-2 rounded-full">✦ Meet the Masters ✦</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-dark mt-4">Guided by Wisdom & Experience</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <!-- Master 1 -->
+            <div class="premium-card" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=400&q=80"
+                    class="w-full h-56 object-cover" alt="Guru Arjun" loading="lazy">
+                <div class="p-5">
+                    <h4 class="font-display text-xl font-bold text-primary">Acharya Arjun</h4>
+                    <p class="text-gold text-sm font-semibold mb-2">Yoga & Meditation Master</p>
+                    <p class="text-dark/60 text-sm">25+ years in Hatha & Ashtanga Yoga, specialized in therapeutic yoga
+                        for PCOD, thyroid, and spine care.</p>
+                </div>
+            </div>
+            <!-- Master 2 -->
+            <div class="premium-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80"
+                    class="w-full h-56 object-cover" alt="Dr. Meera" loading="lazy">
+                <div class="p-5">
+                    <h4 class="font-display text-xl font-bold text-primary">Dr. Meera Sharma</h4>
+                    <p class="text-gold text-sm font-semibold mb-2">Bach Flower Therapist</p>
+                    <p class="text-dark/60 text-sm">Certified practitioner with 15 years of emotional healing
+                        experience, trained in the UK and India.</p>
+                </div>
+            </div>
+            <!-- Master 3 -->
+            <div class="premium-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&q=80"
+                    class="w-full h-56 object-cover" alt="Smt. Lakshmi" loading="lazy">
+                <div class="p-5">
+                    <h4 class="font-display text-xl font-bold text-primary">Smt. Lakshmi Iyer</h4>
+                    <p class="text-gold text-sm font-semibold mb-2">Carnatic Vocal & Kids Mentor</p>
+                    <p class="text-dark/60 text-sm">Renowned vocalist and kids’ educator; 20+ years of nurturing young
+                        talents through music and stories.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TIMELINE / JOURNEY ========== -->
+    <section class="py-16 sm:py-20 bg-beige/60 px-4 sm:px-6">
+        <div class="max-w-5xl mx-auto" data-aos="fade-up">
+            <div class="text-center mb-12">
+                <span class="text-gold text-sm bg-gold/10 px-5 py-2 rounded-full">Our Journey</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-dark mt-4">From Vision to Global Community
+                </h2>
+            </div>
+            <div
+                class="space-y-8 relative before:absolute before:left-4 sm:before:left-6 before:top-0 before:bottom-0 before:w-0.5 before:bg-gold/30 pl-8 sm:pl-12">
+                <div class="flex gap-4 sm:gap-6" data-aos="fade-right">
+                    <div class="timeline-dot absolute left-3 sm:left-4"></div>
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-md border border-gold/10 flex-1">
+                        <span class="text-gold font-bold text-sm">2015</span>
+                        <h4 class="font-display text-xl font-bold text-primary mt-1">The Seed is Planted</h4>
+                        <p class="text-dark/60 text-sm mt-1">Founded by a small group of Vedic scholars and wellness
+                            practitioners in Hyderabad, offering just 5 foundational courses.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 sm:gap-6" data-aos="fade-left">
+                    <div class="timeline-dot absolute left-3 sm:left-4"></div>
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-md border border-gold/10 flex-1">
+                        <span class="text-gold font-bold text-sm">2018</span>
+                        <h4 class="font-display text-xl font-bold text-primary mt-1">First Summer Camp</h4>
+                        <p class="text-dark/60 text-sm mt-1">Launched the iconic Summer Camp program with 15+ courses,
+                            attracting families from across the country.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 sm:gap-6" data-aos="fade-right">
+                    <div class="timeline-dot absolute left-3 sm:left-4"></div>
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-md border border-gold/10 flex-1">
+                        <span class="text-gold font-bold text-sm">2020</span>
+                        <h4 class="font-display text-xl font-bold text-primary mt-1">Going Global Online</h4>
+                        <p class="text-dark/60 text-sm mt-1">Introduced hybrid learning, enabling students from 15+
+                            countries to join our live sessions and workshops.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 sm:gap-6" data-aos="fade-left">
+                    <div class="timeline-dot absolute left-3 sm:left-4"></div>
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-md border border-gold/10 flex-1">
+                        <span class="text-gold font-bold text-sm">2026</span>
+                        <h4 class="font-display text-xl font-bold text-primary mt-1">Summer Camp 2026 – Bigger &
+                            Brighter</h4>
+                        <p class="text-dark/60 text-sm mt-1">40+ courses, 18 master trainers, and the most comprehensive
+                            holistic curriculum ever – welcoming you to transform!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CALL TO ACTION ========== -->
+    <section class="py-16 sm:py-24 bg-gradient-to-r from-primary to-deepgreen px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto text-center text-white" data-aos="fade-up">
+            <i class="fas fa-gem text-4xl text-gold mb-4"></i>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold">Ready to Begin Your Journey?</h2>
+            <p class="text-white/70 mt-3 text-sm sm:text-base max-w-xl mx-auto">
+                Join thousands of students who have transformed their lives with our summer camps and year-round
+                programs. Your path to holistic living starts here.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+                <a href="index.html#courses" class="btn-gold text-base px-8 py-3 shadow-xl">Explore Courses</a>
+                <a href="index.html#contact"
+                    class="btn-outline-premium border-white text-white hover:bg-white hover:text-primary text-base px-8 py-3">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-dark text-white py-10 sm:py-12 px-3 sm:px-5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <div>
+                <div class="flex gap-2 items-center">
+                    <div
+                        class="w-8 h-8 lg:w-10 lg:h-10 bg-gold rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-om text-primary text-sm lg:text-base"></i>
+                    </div>
+                    <span class="font-display text-lg lg:text-xl font-bold">STAR VEDIC ACADEMY</span>
+                </div>
+                <p class="text-white/50 text-xs sm:text-sm mt-3">Ancient Wisdom, Modern Approach — transforming lives
+                    since 2015.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-3 text-sm sm:text-base">Quick Links</h4>
+                <ul class="space-y-1.5 sm:space-y-2 text-white/50 text-xs sm:text-sm">
+                    <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
+                    <li><a href="index.html#courses" class="hover:text-gold transition">Summer Camp Courses</a></li>
+                    <li><a href="index.html#bach" class="hover:text-gold transition">Bach Flower Therapy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-3 text-sm sm:text-base">Contact</h4>
+                <p class="text-white/50 text-xs sm:text-sm"><i class="fas fa-phone-alt mr-2"></i> +91 98765 43210</p>
+                <p class="text-white/50 text-xs sm:text-sm mt-1"><i class="fas fa-envelope mr-2"></i>
+                    hello@starvedic.edu</p>
+                <p class="text-white/50 text-xs sm:text-sm mt-1"><i class="fas fa-map-marker-alt mr-2"></i> Hyderabad,
+                    India</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-3 text-sm sm:text-base">Follow Us</h4>
+                <div class="flex gap-4 text-xl sm:text-2xl">
+                    <i class="fab fa-instagram hover:text-gold cursor-pointer transition"></i>
+                    <i class="fab fa-facebook hover:text-gold cursor-pointer transition"></i>
+                    <i class="fab fa-youtube hover:text-gold cursor-pointer transition"></i>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10 mt-8 sm:mt-10 pt-5 sm:pt-6 text-center text-white/40 text-xs sm:text-sm">
+            © 2026 Star Vedic Academy — All Rights Reserved. Premium Summer Camp Experience.
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 700,
+            once: true,
+            offset: 40,
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const bodyEl = document.body;
+
+        function closeMenu() {
+            if (mobileMenu && mobileMenuBtn) {
+                mobileMenu.classList.remove('open');
+                mobileMenuBtn.classList.remove('active');
+                bodyEl.style.overflow = '';
+            }
+        }
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.contains('open');
+                if (isOpen) {
+                    closeMenu();
+                } else {
+                    mobileMenu.classList.add('open');
+                    mobileMenuBtn.classList.add('active');
+                    bodyEl.style.overflow = 'hidden';
+                }
+            });
+
+            // Close on link click
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    setTimeout(closeMenu, 80);
+                });
+            });
+        }
+
+        // Close menu on window resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) closeMenu();
+        });
+
+        // Smooth scroll for internal anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const navHeight = document.querySelector('nav')?.offsetHeight || 60;
+                    window.scrollTo({
+                        top: target.getBoundingClientRect().top + window.pageYOffset - navHeight,
+                        behavior: 'smooth',
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

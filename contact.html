@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Star Vedic Academy</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F2C23',
+                        accent: '#F28C28',
+                        gold: '#D4AF37',
+                        cream: '#FFF9F0',
+                        beige: '#F5EFE6',
+                        dark: '#1E1E1E',
+                        deepgreen: '#1A3F34',
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display', 'serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #FFF9F0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .glass-nav {
+            background: rgba(15, 44, 35, 0.95);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .premium-card {
+            background: white;
+            border-radius: 2rem;
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37, #F28C28);
+            color: #0F2C23;
+            font-weight: 700;
+            border-radius: 999px;
+            transition: .3s;
+            box-shadow: 0 10px 25px rgba(242, 140, 40, 0.3);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 35px rgba(242, 140, 40, 0.4);
+        }
+
+        .input-premium {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border-radius: 1rem;
+            border: 1.5px solid rgba(15, 44, 35, 0.12);
+            background: white;
+            outline: none;
+            transition: .3s;
+        }
+
+        .input-premium:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 160px;
+        }
+
+        #mobileMenu {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: .4s;
+            background: rgba(15, 44, 35, 0.98);
+        }
+
+        #mobileMenu.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .hamburger-line {
+            width: 24px;
+            height: 2px;
+            background: white;
+            border-radius: 10px;
+            transition: .3s;
+        }
+
+        #mobileMenuBtn.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translateY(7px);
+        }
+
+        #mobileMenuBtn.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        #mobileMenuBtn.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translateY(-7px);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        .hero-bg {
+            background:
+                linear-gradient(rgba(15, 44, 35, 0.85), rgba(15, 44, 35, 0.88)),
+                url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav py-4">
+        <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
+
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center">
+                    <i class="fas fa-om text-primary"></i>
+                </div>
+
+                <span class="text-white font-display text-2xl font-bold">
+                    STAR VEDIC
+                </span>
+            </a>
+
+            <!-- Desktop -->
+
+            <div class="hidden lg:flex items-center gap-8 text-white/80 text-sm">
+                <a href="index.html" class="hover:text-gold transition">Home</a>
+                <a href="courses.html" class="hover:text-gold transition">Courses</a>
+                <a href="mycourses.html" class="hover:text-gold transition">My Courses</a>
+                <a href="about.html" class="hover:text-gold transition">About</a>
+                <a href="contact.html" class="text-gold font-semibold">Contact</a>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="signin.html" class="text-white/80 hover:text-gold">Sign In</a>
+
+                <button class="btn-gold px-6 py-3">
+                    Join Camp
+                </button>
+            </div>
+
+            <!-- Mobile -->
+
+            <button id="mobileMenuBtn" class="lg:hidden flex flex-col gap-1.5 bg-transparent border-none outline-none">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+        </div>
+
+        <!-- MOBILE MENU -->
+
+        <div id="mobileMenu" class="lg:hidden">
+            <div class="flex flex-col px-6 pb-6 pt-2">
+
+                <a href="index.html" class="text-white py-3 border-b border-white/10">Home</a>
+                <a href="courses.html" class="text-white py-3 border-b border-white/10">Courses</a>
+                <a href="mycourses.html" class="text-white py-3 border-b border-white/10">My Courses</a>
+                <a href="about.html" class="text-white py-3 border-b border-white/10">About</a>
+                <a href="contact.html" class="text-gold py-3 border-b border-white/10">Contact</a>
+
+                <button class="btn-gold py-3 mt-5">
+                    Join Camp
+                </button>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero-bg pt-36 pb-24 text-center relative overflow-hidden">
+
+        <div class="max-w-4xl mx-auto px-5 relative z-10">
+
+            <h1 data-aos="fade-up" class="font-display text-4xl sm:text-6xl font-black text-white mt-6 leading-tight">
+                Let's Start a
+                <span class="text-gold">
+                    Conversation
+                </span>
+            </h1>
+
+            <p data-aos="fade-up" data-aos-delay="100" class="text-white/70 mt-6 max-w-2xl mx-auto text-sm sm:text-lg">
+                Whether you're curious about our courses, wellness therapies,
+                or summer camp experiences — we're here to help guide your journey.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+
+    <section class="py-20 px-5">
+
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-5 gap-12">
+
+            <!-- FORM -->
+
+            <div class="lg:col-span-3" data-aos="fade-right">
+
+                <div class="premium-card p-8 lg:p-10">
+
+                    <h2 class="font-display text-3xl font-bold text-dark">
+                        Send a Message
+                    </h2>
+
+                    <p class="text-dark/60 text-sm mt-2 mb-8">
+                        We usually reply within a few working hours.
+                    </p>
+
+                    <form id="contactForm" class="space-y-5">
+
+                        <div class="grid sm:grid-cols-2 gap-5">
+
+                            <div>
+                                <label class="block mb-2 text-sm font-semibold text-dark/70">
+                                    Full Name
+                                </label>
+
+                                <input type="text" class="input-premium" placeholder="Arjun Sharma" required>
+                            </div>
+
+                            <div>
+                                <label class="block mb-2 text-sm font-semibold text-dark/70">
+                                    Email Address
+                                </label>
+
+                                <input type="email" class="input-premium" placeholder="arjun@example.com" required>
+                            </div>
+
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-5">
+
+                            <div>
+                                <label class="block mb-2 text-sm font-semibold text-dark/70">
+                                    Phone Number
+                                </label>
+
+                                <input type="tel" class="input-premium" placeholder="+91 98765 43210">
+                            </div>
+
+                            <div>
+                                <label class="block mb-2 text-sm font-semibold text-dark/70">
+                                    Subject
+                                </label>
+
+                                <select class="input-premium">
+
+                                    <option>Summer Camp 2026</option>
+                                    <option>Yoga & Wellness</option>
+                                    <option>Bach Flower Therapy</option>
+                                    <option>Kids Programs</option>
+                                    <option>Membership Plans</option>
+                                    <option>Other</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div>
+
+                            <label class="block mb-2 text-sm font-semibold text-dark/70">
+                                Message
+                            </label>
+
+                            <textarea class="input-premium" placeholder="Tell us how we can help you..."></textarea>
+
+                        </div>
+
+                        <button type="submit" class="btn-gold px-10 py-4 flex items-center gap-3 justify-center">
+
+                            Send Message
+                            <i class="fas fa-paper-plane"></i>
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <!-- CONTACT INFO -->
+
+            <div class="lg:col-span-2 space-y-6" data-aos="fade-left">
+
+                <div class="premium-card p-7 flex gap-5 items-start">
+
+                    <div class="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center">
+                        <i class="fas fa-map-marker-alt text-gold text-xl"></i>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-primary text-lg mb-2">
+                            Visit Our Campus
+                        </h3>
+
+                        <p class="text-dark/60 text-sm leading-relaxed">
+                            Star Vedic Academy <br>
+                            Plot 45, Road No.12 <br>
+                            Banjara Hills, Hyderabad <br>
+                            Telangana – 500034
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="premium-card p-7 flex gap-5 items-start">
+
+                    <div class="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center">
+                        <i class="fas fa-phone-alt text-gold text-xl"></i>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-primary text-lg mb-2">
+                            Call Us
+                        </h3>
+
+                        <p class="text-dark/60 text-sm">
+                            +91 98765 43210
+                        </p>
+
+                        <p class="text-dark/40 text-xs mt-2">
+                            Mon – Sat • 9:00 AM – 7:00 PM
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="premium-card p-7 flex gap-5 items-start">
+
+                    <div class="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center">
+                        <i class="fas fa-envelope text-gold text-xl"></i>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-primary text-lg mb-2">
+                            Email Us
+                        </h3>
+
+                        <p class="text-dark/60 text-sm">
+                            hello@starvedic.edu
+                        </p>
+
+                        <p class="text-dark/60 text-sm mt-1">
+                            support@starvedic.edu
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="premium-card p-7">
+
+                    <h3 class="font-bold text-primary text-lg mb-5">
+                        Follow Our Journey
+                    </h3>
+
+                    <div class="flex gap-5 text-2xl">
+
+                        <a href="#" class="text-dark/60 hover:text-gold transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+
+                        <a href="#" class="text-dark/60 hover:text-gold transition">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+
+                        <a href="#" class="text-dark/60 hover:text-gold transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+
+                        <a href="#" class="text-dark/60 hover:text-gold transition">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MAP -->
+
+    <section class="px-5 pb-20">
+
+        <div class="max-w-7xl mx-auto premium-card overflow-hidden">
+
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.4039952987454!2d78.4422593153516!3d17.426598388053385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91d9c2b6e4b3%3A0x1c3e1b0e5c6b2d4!2sBanjara%20Hills%2C%20Hyderabad!5e0!3m2!1sen!2sin!4v1695123456789"
+                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+        </div>
+
+    </section>
+
+    <!-- FAQ -->
+
+    <section class="py-20 bg-beige/60 px-5">
+
+        <div class="max-w-4xl mx-auto">
+
+            <div class="text-center mb-10">
+
+                <span class="bg-gold/10 text-gold px-5 py-2 rounded-full text-sm">
+                    Quick Answers
+                </span>
+
+                <h2 class="font-display text-4xl font-bold text-dark mt-5">
+                    Frequently Asked Questions
+                </h2>
+
+            </div>
+
+            <div class="space-y-4">
+
+                <div class="faq-item bg-white rounded-3xl p-6 cursor-pointer">
+
+                    <div class="faq-question flex items-center justify-between">
+
+                        <span class="font-semibold text-primary">
+                            What are the office timings?
+                        </span>
+
+                        <i class="fas fa-chevron-down text-gold"></i>
+
+                    </div>
+
+                    <div class="faq-answer text-dark/60 text-sm">
+
+                        <p class="pt-4">
+                            Our office is open Monday to Saturday from
+                            9:00 AM to 7:00 PM IST.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="faq-item bg-white rounded-3xl p-6 cursor-pointer">
+
+                    <div class="faq-question flex items-center justify-between">
+
+                        <span class="font-semibold text-primary">
+                            How quickly do you respond?
+                        </span>
+
+                        <i class="fas fa-chevron-down text-gold"></i>
+
+                    </div>
+
+                    <div class="faq-answer text-dark/60 text-sm">
+
+                        <p class="pt-4">
+                            Usually within 2–4 working hours.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="faq-item bg-white rounded-3xl p-6 cursor-pointer">
+
+                    <div class="faq-question flex items-center justify-between">
+
+                        <span class="font-semibold text-primary">
+                            Can I register by phone?
+                        </span>
+
+                        <i class="fas fa-chevron-down text-gold"></i>
+
+                    </div>
+
+                    <div class="faq-answer text-dark/60 text-sm">
+
+                        <p class="pt-4">
+                            Yes, our support team can help you complete
+                            registration via phone or email.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- NEWSLETTER -->
+
+    <section class="py-20 bg-gradient-to-r from-primary to-deepgreen px-5">
+
+        <div class="max-w-3xl mx-auto text-center text-white">
+
+            <i class="fas fa-paper-plane text-gold text-4xl mb-4"></i>
+
+            <h2 class="font-display text-4xl font-bold">
+                Receive Wisdom Directly
+            </h2>
+
+            <p class="text-white/70 mt-4">
+                Get updates on new courses, therapies,
+                and early-bird offers.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 mt-8">
+
+                <input type="email" placeholder="Your Email Address"
+                    class="flex-1 px-6 py-4 rounded-full bg-white/20 border border-white/20 outline-none placeholder:text-white/50">
+
+                <button class="btn-gold px-8 py-4">
+                    Subscribe
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="bg-dark text-white py-14 px-5">
+
+        <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+            <div>
+
+                <div class="flex items-center gap-3">
+
+                    <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center">
+                        <i class="fas fa-om text-primary"></i>
+                    </div>
+
+                    <span class="font-display text-2xl font-bold">
+                        STAR VEDIC
+                    </span>
+
+                </div>
+
+                <p class="text-white/50 text-sm mt-4">
+                    Ancient Wisdom, Modern Transformation.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4 class="font-bold mb-4">
+                    Explore
+                </h4>
+
+                <div class="space-y-2 text-white/50 text-sm">
+                    <a href="#" class="block hover:text-gold">Courses</a>
+                    <a href="#" class="block hover:text-gold">Therapy</a>
+                    <a href="#" class="block hover:text-gold">About</a>
+                </div>
+
+            </div>
+
+            <div>
+
+                <h4 class="font-bold mb-4">
+                    Contact
+                </h4>
+
+                <p class="text-white/50 text-sm">
+                    +91 98765 43210
+                </p>
+
+                <p class="text-white/50 text-sm mt-2">
+                    hello@starvedic.edu
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4 class="font-bold mb-4">
+                    Follow Us
+                </h4>
+
+                <div class="flex gap-4 text-2xl">
+
+                    <a href="#" class="hover:text-gold">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="#" class="hover:text-gold">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+                    <a href="#" class="hover:text-gold">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="border-t border-white/10 mt-10 pt-6 text-center text-white/40 text-sm">
+            © 2026 Star Vedic Academy — All Rights Reserved.
+        </div>
+
+    </footer>
+
+    <!-- SUCCESS TOAST -->
+
+    <div id="toast" class="fixed top-5 right-5 bg-primary text-white px-6 py-4 rounded-2xl shadow-2xl hidden z-50">
+        Message sent successfully ✨
+    </div>
+
+    <!-- AOS -->
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+
+        AOS.init({
+            duration: 700,
+            once: true,
+        });
+
+        // MOBILE MENU
+
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileBtn.addEventListener('click', () => {
+
+            mobileMenu.classList.toggle('open');
+            mobileBtn.classList.toggle('active');
+
+        });
+
+        // FAQ
+
+        document.querySelectorAll('.faq-item').forEach(item => {
+
+            item.addEventListener('click', () => {
+
+                const answer = item.querySelector('.faq-answer');
+                const icon = item.querySelector('i');
+
+                const isOpen = answer.style.maxHeight;
+
+                document.querySelectorAll('.faq-answer').forEach(el => {
+                    el.style.maxHeight = null;
+                });
+
+                document.querySelectorAll('.faq-question i').forEach(el => {
+                    el.style.transform = 'rotate(0deg)';
+                });
+
+                if (!isOpen) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+
+            });
+
+        });
+
+        // FORM
+
+        const form = document.getElementById('contactForm');
+
+        form.addEventListener('submit', (e) => {
+
+            e.preventDefault();
+
+            const toast = document.getElementById('toast');
+
+            toast.classList.remove('hidden');
+
+            form.reset();
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+
+        });
+
+    </script>
+
+</body>
+
+</html>

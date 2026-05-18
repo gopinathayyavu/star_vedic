@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>My Courses | Star Vedic Academy</title>
+
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- TAILWIND -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS -->
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+
+        tailwind.config = {
+
+            theme: {
+
+                extend: {
+
+                    colors: {
+
+                        primary: '#0F2C23',
+                        accent: '#F28C28',
+                        gold: '#D4AF37',
+                        cream: '#FFF9F0',
+                        beige: '#F5EFE6',
+                        dark: '#1E1E1E',
+                        deepgreen: '#1A3F34',
+
+                    },
+
+                    fontFamily: {
+
+                        display: ['Playfair Display', 'serif'],
+                        body: ['Inter', 'sans-serif'],
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    </script>
+
+    <style>
+        * {
+
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+
+        }
+
+        body {
+
+            background: #FFF9F0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+
+        }
+
+        .font-display {
+
+            font-family: 'Playfair Display', serif;
+
+        }
+
+        .glass-nav {
+
+            background: rgba(15, 44, 35, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+
+        }
+
+        .hero-bg {
+
+            background:
+                linear-gradient(rgba(15, 44, 35, 0.82),
+                    rgba(15, 44, 35, 0.9)),
+                url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1600');
+
+            background-size: cover;
+            background-position: center;
+
+        }
+
+        .premium-card {
+
+            background: white;
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            transition: .4s;
+            position: relative;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.05);
+
+        }
+
+        .premium-card:hover {
+
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+
+        }
+
+        .btn-gold {
+
+            background: linear-gradient(135deg, #D4AF37, #F28C28);
+            color: #0F2C23;
+            font-weight: 700;
+            border-radius: 999px;
+            transition: .3s;
+            box-shadow: 0 10px 25px rgba(242, 140, 40, 0.3);
+
+        }
+
+        .btn-gold:hover {
+
+            transform: translateY(-3px);
+
+        }
+
+        .progress-bar {
+
+            height: 10px;
+            background: #E5E7EB;
+            border-radius: 999px;
+            overflow: hidden;
+
+        }
+
+        .progress-fill {
+
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #D4AF37, #F28C28);
+
+        }
+
+        .course-badge {
+
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #F28C28;
+            padding: 7px 14px;
+            border-radius: 999px;
+            font-size: .75rem;
+            font-weight: 700;
+
+        }
+
+        .empty-state {
+
+            min-height: 60vh;
+
+        }
+
+        #mobileMenu {
+
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: .4s;
+            background: rgba(15, 44, 35, 0.98);
+
+        }
+
+        #mobileMenu.open {
+
+            max-height: 500px;
+            opacity: 1;
+
+        }
+
+        .hamburger-line {
+
+            width: 22px;
+            height: 2px;
+            background: white;
+            border-radius: 10px;
+            transition: .3s;
+
+        }
+
+        #mobileMenuBtn.active .hamburger-line:nth-child(1) {
+
+            transform: rotate(45deg) translateY(7px);
+
+        }
+
+        #mobileMenuBtn.active .hamburger-line:nth-child(2) {
+
+            opacity: 0;
+
+        }
+
+        #mobileMenuBtn.active .hamburger-line:nth-child(3) {
+
+            transform: rotate(-45deg) translateY(-7px);
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav py-4">
+
+        <div class="max-w-7xl mx-auto px-5 flex items-center justify-between">
+
+            <a href="#" class="flex items-center gap-3">
+
+                <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center">
+                    <i class="fas fa-om text-primary"></i>
+                </div>
+
+                <span class="font-display text-white text-2xl font-bold">
+                    STAR VEDIC
+                </span>
+
+            </a>
+
+            <!-- DESKTOP -->
+
+            <div class="hidden lg:flex items-center gap-8 text-white/80 text-sm">
+
+                <a href="index.html" class="hover:text-gold">Home</a>
+                <a href="courses.html" class="hover:text-gold">Courses</a>
+                <a href="mycourses.html" class="text-gold font-semibold">My Courses</a>
+                <a href="about.html" class="hover:text-gold">About</a>
+                <a href="contact.html" class="hover:text-gold">Contact</a>
+
+            </div>
+
+            <button class="hidden lg:block btn-gold px-6 py-3">
+                Student Dashboard
+            </button>
+
+            <!-- MOBILE -->
+
+            <button id="mobileMenuBtn" class="lg:hidden flex flex-col gap-1.5 bg-transparent border-none outline-none">
+
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+
+            </button>
+
+        </div>
+
+        <!-- MOBILE MENU -->
+
+        <div id="mobileMenu" class="lg:hidden">
+
+            <div class="flex flex-col px-6 pb-6 pt-2">
+
+                <a href="index.html" class="text-white py-3 border-b border-white/10">Home</a>
+                <a href="courses.html" class="text-white py-3 border-b border-white/10">Courses</a>
+                <a href="mycourses.html" class="text-gold py-3 border-b border-white/10">My Courses</a>
+                <a href="about.html" class="text-white py-3 border-b border-white/10">About</a>
+                <a href="contact.html" class="text-white py-3 border-b border-white/10">Contact</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero-bg min-h-[55vh] flex items-center justify-center text-center px-5">
+
+        <div class="max-w-4xl mx-auto pt-24">
+            <h1 data-aos="fade-up" class="font-display text-5xl md:text-7xl font-black text-white mt-6 leading-tight">
+
+                My
+                <span class="text-gold">
+                    Courses
+                </span>
+
+            </h1>
+
+            <p data-aos="fade-up" data-aos-delay="100" class="text-white/70 max-w-2xl mx-auto mt-6 text-sm md:text-lg">
+
+                Continue your transformation journey with your enrolled programs.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- STATS -->
+
+    <section class="relative -mt-14 z-20 px-5">
+
+        <div class="max-w-6xl mx-auto">
+
+            <div
+                class="bg-white/80 backdrop-blur-lg rounded-3xl p-8 grid grid-cols-2 md:grid-cols-4 gap-6 shadow-2xl border border-gold/10">
+
+                <div class="text-center">
+
+                    <div id="totalCourses" class="text-4xl font-extrabold text-gold">
+                        0
+                    </div>
+
+                    <p class="text-dark/60 mt-2 text-sm">
+                        Joined Courses
+                    </p>
+
+                </div>
+
+                <div class="text-center">
+
+                    <div class="text-4xl font-extrabold text-gold">
+                        12
+                    </div>
+
+                    <p class="text-dark/60 mt-2 text-sm">
+                        Lessons Completed
+                    </p>
+
+                </div>
+
+                <div class="text-center">
+
+                    <div class="text-4xl font-extrabold text-gold">
+                        85%
+                    </div>
+
+                    <p class="text-dark/60 mt-2 text-sm">
+                        Attendance
+                    </p>
+
+                </div>
+
+                <div class="text-center">
+
+                    <div class="text-4xl font-extrabold text-gold">
+                        4
+                    </div>
+
+                    <p class="text-dark/60 mt-2 text-sm">
+                        Certificates
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- MY COURSES -->
+
+    <section class="py-24 px-5">
+
+        <div class="max-w-7xl mx-auto">
+
+            <div class="flex items-center justify-between flex-wrap gap-5 mb-14">
+
+                <div>
+
+                    <h2 class="font-display text-5xl font-bold text-dark">
+                        Enrolled Programs
+                    </h2>
+
+                    <p class="text-dark/50 mt-3">
+                        Continue where you left off
+                    </p>
+
+                </div>
+
+                <a href="courses.html" class="btn-gold px-7 py-4">
+
+                    Browse More Courses
+
+                </a>
+
+            </div>
+
+            <!-- COURSES GRID -->
+
+            <div id="coursesContainer" class="grid md:grid-cols-2 xl:grid-cols-3 gap-8"></div>
+
+            <!-- EMPTY STATE -->
+
+            <div id="emptyState" class="hidden empty-state flex flex-col items-center justify-center text-center">
+
+                <div class="w-32 h-32 rounded-full bg-gold/10 flex items-center justify-center">
+
+                    <i class="fas fa-book-open text-5xl text-gold"></i>
+
+                </div>
+
+                <h3 class="font-display text-4xl font-bold text-primary mt-8">
+                    No Courses Joined Yet
+                </h3>
+
+                <p class="text-dark/50 mt-4 max-w-lg">
+                    Start your spiritual and holistic learning journey
+                    by joining one of our premium programs.
+                </p>
+
+                <a href="courses.html" class="btn-gold inline-block mt-8 px-8 py-4">
+
+                    Explore Courses
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CTA -->
+
+    <section class="py-24 bg-gradient-to-r from-primary to-deepgreen px-5">
+
+        <div class="max-w-4xl mx-auto text-center text-white">
+
+            <i class="fas fa-graduation-cap text-gold text-5xl mb-5"></i>
+
+            <h2 class="font-display text-5xl font-bold">
+                Keep Growing Every Day
+            </h2>
+
+            <p class="text-white/70 max-w-2xl mx-auto mt-5">
+
+                Consistency and wisdom create transformation.
+                Continue your journey toward a healthier and more peaceful life.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="bg-dark text-white py-14 px-5">
+
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+
+            <div>
+
+                <div class="flex items-center gap-3">
+
+                    <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center">
+                        <i class="fas fa-om text-primary"></i>
+                    </div>
+
+                    <span class="font-display text-2xl font-bold">
+                        STAR VEDIC
+                    </span>
+
+                </div>
+
+                <p class="text-white/50 text-sm mt-4">
+                    Ancient Wisdom. Modern Transformation.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4 class="font-bold mb-4">
+                    Learning
+                </h4>
+
+                <div class="space-y-2 text-white/50 text-sm">
+
+                    <a href="#" class="block hover:text-gold">Yoga</a>
+                    <a href="#" class="block hover:text-gold">Health</a>
+                    <a href="#" class="block hover:text-gold">Languages</a>
+
+                </div>
+
+            </div>
+
+            <div>
+
+                <h4 class="font-bold mb-4">
+                    Contact
+                </h4>
+
+                <p class="text-white/50 text-sm">
+                    +91 98765 43210
+                </p>
+
+                <p class="text-white/50 text-sm mt-2">
+                    hello@starvedic.edu
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4 class="font-bold mb-4">
+                    Follow
+                </h4>
+
+                <div class="flex gap-4 text-2xl">
+
+                    <a href="#" class="hover:text-gold">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="#" class="hover:text-gold">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+                    <a href="#" class="hover:text-gold">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="border-t border-white/10 mt-10 pt-6 text-center text-white/40 text-sm">
+
+            © 2026 Star Vedic Academy — All Rights Reserved.
+
+        </div>
+
+    </footer>
+
+    <!-- AOS -->
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+
+        AOS.init({
+
+            duration: 700,
+            once: true
+
+        });
+
+        // MOBILE MENU
+
+        const mobileBtn =
+            document.getElementById('mobileMenuBtn');
+
+        const mobileMenu =
+            document.getElementById('mobileMenu');
+
+        mobileBtn.addEventListener('click', () => {
+
+            mobileMenu.classList.toggle('open');
+            mobileBtn.classList.toggle('active');
+
+        });
+
+        // GET COURSES
+
+        const myCourses =
+            JSON.parse(localStorage.getItem('myCourses')) || [];
+
+        const container =
+            document.getElementById('coursesContainer');
+
+        const emptyState =
+            document.getElementById('emptyState');
+
+        const totalCourses =
+            document.getElementById('totalCourses');
+
+        totalCourses.innerHTML = myCourses.length;
+
+        // EMPTY STATE
+
+        if (myCourses.length === 0) {
+
+            emptyState.classList.remove('hidden');
+
+        }
+
+        // RENDER COURSES
+
+        myCourses.forEach((course, index) => {
+
+            const randomProgress =
+                Math.floor(Math.random() * 80) + 10;
+
+            const card =
+                document.createElement('div');
+
+            card.className =
+                'premium-card';
+
+            card.setAttribute(
+                'data-aos',
+                'fade-up'
+            );
+
+            card.setAttribute(
+                'data-aos-delay',
+                index * 100
+            );
+
+            card.innerHTML = `
+
+                <div class="relative">
+
+                    <img src="${course.image}"
+                        class="w-full h-64 object-cover">
+
+                    <div class="course-badge">
+                        ${course.category}
+                    </div>
+
+                </div>
+
+                <div class="p-7">
+
+                    <div class="flex items-center justify-between gap-5">
+
+                        <h3 class="font-display text-3xl font-bold text-primary leading-tight">
+                            ${course.title}
+                        </h3>
+
+                    </div>
+
+                    <p class="text-dark/60 mt-4 text-sm leading-relaxed">
+                        ${course.description}
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-5 mt-6">
+
+                        <div>
+
+                            <p class="text-dark/40 text-xs">
+                                Duration
+                            </p>
+
+                            <p class="font-semibold text-primary">
+                                ${course.duration}
+                            </p>
+
+                        </div>
+
+                        <div>
+
+                            <p class="text-dark/40 text-xs">
+                                Fees
+                            </p>
+
+                            <p class="font-bold text-gold text-xl">
+                                ${course.price}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- PROGRESS -->
+
+                    <div class="mt-8">
+
+                        <div class="flex items-center justify-between mb-3">
+
+                            <p class="font-semibold text-primary">
+                                Course Progress
+                            </p>
+
+                            <span class="text-sm font-bold text-gold">
+                                ${randomProgress}%
+                            </span>
+
+                        </div>
+
+                        <div class="progress-bar">
+
+                            <div class="progress-fill"
+                                style="width:${randomProgress}%"></div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ACTIONS -->
+
+                    <div class="flex gap-4 mt-8">
+
+                        <button
+                            class="btn-gold flex-1 py-4">
+
+                            Continue Learning
+
+                        </button>
+
+                        <button
+                            class="remove-btn w-16 rounded-full border border-red-200 text-red-500 hover:bg-red-50 transition">
+
+                            <i class="fas fa-trash"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+            // REMOVE COURSE
+
+            const removeBtn =
+                card.querySelector('.remove-btn');
+
+            removeBtn.addEventListener('click', () => {
+
+                const updatedCourses =
+                    myCourses.filter(item =>
+                        item.title !== course.title
+                    );
+
+                localStorage.setItem(
+                    'myCourses',
+                    JSON.stringify(updatedCourses)
+                );
+
+                location.reload();
+
+            });
+
+            container.appendChild(card);
+
+        });
+
+    </script>
+
+</body>
+
+</html>
