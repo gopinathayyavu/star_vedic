@@ -1,451 +1,740 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Star Vedic Academy | Admin Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <style>
-        * {
-            scroll-behavior: smooth;
-        }
 
+<head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dashboard</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- TAILWIND -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- CHART -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F2C23',
+                        secondary: '#1A3F34',
+                        gold: '#D4AF37',
+                        accent: '#F28C28',
+                        bgsoft: '#F8F6F2',
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display', 'serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
         body {
             font-family: 'Inter', sans-serif;
-            background: #F9F7F2;
+            background: #F8F6F2;
+            overflow-x: hidden;
         }
 
-        .font-display {
-            font-family: 'Playfair Display', serif;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
-        .sidebar-transition {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .menu-item.active {
+            background: linear-gradient(to right, #D4AF37, #F28C28);
+            color: #0F2C23;
+            font-weight: 700;
         }
 
-        .card-hover {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.08);
         }
 
-        .card-hover:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+        .mobile-sidebar {
+            transition: all 0.3s ease;
         }
 
-        .table-responsive {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
+        @media(max-width:1024px) {
+            .mobile-sidebar {
+                transform: translateX(-100%);
+            }
 
-        .modal-backdrop {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
-        }
-
-        .btn-accent {
-            background: linear-gradient(135deg, #F77F00 0%, #FF9F1C 100%);
-        }
-
-        .badge-active {
-            background: #E8F5E9;
-            color: #2E7D32;
-        }
-
-        .badge-blocked {
-            background: #FFEBEE;
-            color: #C62828;
-        }
-
-        input,
-        select,
-        textarea {
-            transition: all 0.2s;
+            .mobile-sidebar.open {
+                transform: translateX(0);
+            }
         }
     </style>
 </head>
 
-<body class="antialiased">
+<body>
 
-    <!-- =============================== ADMIN WRAPPER =============================== -->
-    <div class="flex h-screen overflow-hidden bg-[#F9F7F2]">
-        <!-- SIDEBAR (Mobile responsive) -->
+    <div class="flex min-h-screen">
+
+        <!-- SIDEBAR -->
         <aside id="sidebar"
-            class="fixed inset-y-0 left-0 z-40 w-72 bg-primary text-white transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
-            <div class="p-6 border-b border-white/10 flex items-center gap-3">
-                <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center shadow-lg"><i
-                        class="fas fa-crown text-white text-xl"></i></div>
-                <span class="font-display text-xl font-bold tracking-wide">STAR VEDIC ADMIN</span>
+            class="mobile-sidebar fixed lg:relative z-50 w-[280px] bg-primary text-white h-screen flex flex-col overflow-y-auto">
+
+            <!-- LOGO -->
+            <div class="px-6 py-6 border-b border-white/10 flex items-center gap-3">
+
+                <div class="w-11 h-11 rounded-full bg-gold flex items-center justify-center">
+                    <i class="fas fa-om text-primary text-lg"></i>
+                </div>
+
+                <div>
+                    <h2 class="font-display text-xl font-bold">STAR VEDIC</h2>
+                    <p class="text-xs text-white/60">Admin Dashboard</p>
+                </div>
+
             </div>
-            <nav class="flex-1 py-8 px-4 space-y-2">
-                <a href="#" data-tab="dashboard"
-                    class="nav-item flex items-center gap-4 px-4 py-3 rounded-xl text-white/80 hover:bg-white/10 hover:text-white transition-all group">
-                    <i class="fas fa-chart-line w-5 text-lg"></i><span>Dashboard</span>
+
+            <!-- NAVIGATION -->
+            <nav class="flex-1 px-4 py-6 space-y-2">
+
+                <a href="index.html"
+                    class="menu-item active flex items-center gap-3 px-4 py-3 rounded-xl transition duration-300">
+
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Dashboard</span>
+
                 </a>
-                <a href="#" data-tab="courses"
-                    class="nav-item flex items-center gap-4 px-4 py-3 rounded-xl text-white/80 hover:bg-white/10 hover:text-white transition-all group">
-                    <i class="fas fa-book-open w-5 text-lg"></i><span>Courses Management</span>
+
+                <a href="categories.html"
+                    class="menu-item flex items-center gap-3 px-4 py-3 rounded-xl transition duration-300">
+
+                    <i class="fas fa-layer-group"></i>
+                    <span>Categories</span>
+
                 </a>
-                <a href="#" data-tab="students"
-                    class="nav-item flex items-center gap-4 px-4 py-3 rounded-xl text-white/80 hover:bg-white/10 hover:text-white transition-all group">
-                    <i class="fas fa-users w-5 text-lg"></i><span>Student Management</span>
+
+                <a href="courses.html"
+                    class="menu-item flex items-center gap-3 px-4 py-3 rounded-xl transition duration-300">
+
+                    <i class="fas fa-book-open"></i>
+                    <span>Courses</span>
+
                 </a>
+
+
+
+                <a href="classes.html"
+                    class="menu-item flex items-center gap-3 px-4 py-3 rounded-xl transition duration-300">
+
+                    <i class="fas fa-calendar-days"></i>
+                    <span>Classes</span>
+
+                </a>
+
+                <a href="students.html"
+                    class="menu-item flex items-center gap-3 px-4 py-3 rounded-xl transition duration-300">
+
+                    <i class="fas fa-users"></i>
+                    <span>Students</span>
+
+                </a>
+
+                <a href="certificates.html"
+                    class="menu-item flex items-center gap-3 px-4 py-3 rounded-xl transition duration-300">
+
+                    <i class="fas fa-certificate"></i>
+                    <span>Certificates</span>
+
+                </a>
+
+                <a href="payments.html"
+                    class="menu-item flex items-center gap-3 px-4 py-3 rounded-xl transition duration-300">
+
+                    <i class="fas fa-wallet"></i>
+                    <span>Payments</span>
+
+                </a>
+
             </nav>
-            <div class="p-6 border-t border-white/10 text-white/40 text-xs text-center">© 2026 Star Vedic Academy</div>
+
+            <!-- LOGOUT -->
+            <div class="p-4 border-t border-white/10">
+
+                <button
+                    class="w-full bg-red-500/15 hover:bg-red-500/25 text-red-300 py-3 rounded-xl transition duration-300 flex items-center justify-center gap-2">
+
+                    <i class="fas fa-right-from-bracket"></i>
+                    Logout
+
+                </button>
+
+            </div>
+
         </aside>
 
-        <!-- Mobile overlay -->
-        <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden"></div>
+        <!-- MAIN -->
+        <main class="flex-1">
 
-        <!-- MAIN CONTENT -->
-        <main class="flex-1 md:ml-72 overflow-y-auto h-screen">
-            <!-- Top bar -->
-            <div
-                class="sticky top-0 z-20 bg-white/80 backdrop-blur-md shadow-sm px-6 py-4 flex items-center justify-between border-b border-gray-100">
-                <button id="mobileMenuToggle" class="md:hidden text-primary text-2xl"><i
-                        class="fas fa-bars"></i></button>
-                <h1 class="text-xl font-display font-semibold text-primary">Admin Control Panel</h1>
-                <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 bg-accent rounded-full flex items-center justify-center text-white"><i
-                            class="fas fa-user-shield"></i></div><span
-                        class="hidden sm:inline text-sm font-medium">Admin</span>
-                </div>
-            </div>
+            <!-- TOPBAR -->
+            <header
+                class="sticky top-0 z-40 bg-white/80 backdrop-blur-lg border-b border-gray-200 px-4 lg:px-8 py-4 flex items-center justify-between">
 
-            <!-- DYNAMIC CONTENT SECTIONS -->
-            <div id="dashboardSection" class="p-6 md:p-8 section">
-                <!-- STATS CARDS -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-                    <div class="bg-white rounded-2xl shadow-md p-6 card-hover border-l-4 border-accent">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-gray-500 text-sm">Total Students</p>
-                                <p id="statStudents" class="text-3xl font-bold text-primary mt-1">0</p>
-                            </div><i class="fas fa-user-graduate text-4xl text-accent/30"></i>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl shadow-md p-6 card-hover border-l-4 border-primary">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-gray-500 text-sm">Amount Paid (₹)</p>
-                                <p id="statRevenue" class="text-3xl font-bold text-primary mt-1">0</p>
-                            </div><i class="fas fa-rupee-sign text-4xl text-primary/30"></i>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl shadow-md p-6 card-hover border-l-4 border-accent">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-gray-500 text-sm">Active Courses</p>
-                                <p id="statCourses" class="text-3xl font-bold text-primary mt-1">0</p>
-                            </div><i class="fas fa-chalkboard-user text-4xl text-accent/30"></i>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl shadow-md p-6 card-hover border-l-4 border-primary">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-gray-500 text-sm">Staff Members</p>
-                                <p id="statStaff" class="text-3xl font-bold text-primary mt-1">0</p>
-                            </div><i class="fas fa-person-chalkboard text-4xl text-primary/30"></i>
-                        </div>
-                    </div>
-                </div>
-                <!-- CHARTS row -->
-                <div class="grid lg:grid-cols-2 gap-8 mb-10">
-                    <div class="bg-white p-5 rounded-2xl shadow-md"><canvas id="revenueChart" height="200"></canvas>
-                        <p class="text-center text-gray-600 mt-3 text-sm">Monthly Revenue (₹)</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl shadow-md"><canvas id="enrollmentChart" height="200"></canvas>
-                        <p class="text-center text-gray-600 mt-3 text-sm">Top Categories Enrollment</p>
-                    </div>
-                </div>
-                <!-- Recent Activity Mock -->
-                <div class="bg-white rounded-2xl shadow-md p-6">
-                    <h3 class="font-semibold text-lg mb-4 flex items-center gap-2"><i
-                            class="fas fa-clock text-accent"></i>Recent Activities</h3>
-                    <div class="space-y-3 text-gray-600">
-                        <div class="flex justify-between border-b pb-2"><span>✔ New student joined: Priya
-                                Sharma</span><span class="text-xs text-gray-400">2h ago</span></div>
-                        <div class="flex justify-between border-b pb-2"><span>📅 Course "Yoga for Wellness" time
-                                updated</span><span class="text-xs text-gray-400">Yesterday</span></div>
-                        <div class="flex justify-between border-b pb-2"><span>🎓 Admin added new course: Advanced
-                                Kuchipudi</span><span class="text-xs text-gray-400">2 days ago</span></div>
-                    </div>
-                </div>
-            </div>
+                <div class="flex items-center gap-4">
 
-            <!-- COURSES MANAGEMENT SECTION -->
-            <div id="coursesSection" class="p-6 md:p-8 section hidden">
-                <div class="flex flex-wrap justify-between items-center mb-6 gap-4">
-                    <h2 class="text-2xl font-display font-bold text-primary">📚 Manage Courses & Classes</h2><button
-                        id="addCourseBtn"
-                        class="btn-accent px-5 py-2 rounded-full text-white shadow-md flex items-center gap-2"><i
-                            class="fas fa-plus"></i> New Course</button>
-                </div>
-                <div class="table-responsive bg-white rounded-2xl shadow-md overflow-hidden">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Title</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Category
-                                </th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Zoom Link
-                                </th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Class Time
-                                </th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="coursesTableBody" class="divide-y divide-gray-100"></tbody>
-                    </table>
-                </div>
-            </div>
+                    <!-- MOBILE -->
+                    <button id="menuToggle"
+                        class="lg:hidden w-10 h-10 rounded-lg bg-primary text-white flex items-center justify-center">
 
-            <!-- STUDENT MANAGEMENT SECTION -->
-            <div id="studentsSection" class="p-6 md:p-8 section hidden">
-                <h2 class="text-2xl font-display font-bold text-primary mb-6">👩‍🎓 Student Management (Block / Unblock)
-                </h2>
-                <div class="table-responsive bg-white rounded-2xl shadow-md overflow-hidden">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Student</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="studentsTableBody"></tbody>
-                    </table>
+                        <i class="fas fa-bars"></i>
+
+                    </button>
+
+                    <div>
+
+                        <h1 class="text-2xl font-bold text-primary">
+                            Dashboard
+                        </h1>
+
+                        <p class="text-sm text-gray-500">
+                            Welcome back, Admin
+                        </p>
+
+                    </div>
+
                 </div>
-            </div>
+
+                <!-- RIGHT -->
+                <div class="flex items-center gap-4">
+
+                    <button
+                        class="relative w-11 h-11 rounded-xl bg-white border border-gray-200 flex items-center justify-center">
+
+                        <i class="fas fa-bell"></i>
+
+                        <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full"></span>
+
+                    </button>
+
+                    <div class="flex items-center gap-3">
+
+                        <img src="https://i.pravatar.cc/100" class="w-12 h-12 rounded-2xl object-cover">
+
+                        <div class="hidden sm:block">
+
+                            <h4 class="font-semibold">
+                                Super Admin
+                            </h4>
+
+                            <p class="text-xs text-gray-500">
+                                Administrator
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- CONTENT -->
+            <section class="p-4 lg:p-8 space-y-8">
+
+                <!-- STATS -->
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+                    <!-- CARD -->
+                    <div class="glass-card rounded-3xl p-6">
+
+                        <div class="flex justify-between items-start">
+
+                            <div>
+
+                                <p class="text-gray-500 text-sm">
+                                    Total Revenue
+                                </p>
+
+                                <h2 class="text-4xl font-extrabold mt-3 text-primary">
+                                    ₹8.4L
+                                </h2>
+
+                                <p class="text-green-600 text-sm mt-3 font-semibold">
+                                    +18% This Month
+                                </p>
+
+                            </div>
+
+                            <div class="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center">
+
+                                <i class="fas fa-wallet text-green-600 text-2xl"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- CARD -->
+                    <div class="glass-card rounded-3xl p-6">
+
+                        <div class="flex justify-between items-start">
+
+                            <div>
+
+                                <p class="text-gray-500 text-sm">
+                                    Total Users
+                                </p>
+
+                                <h2 class="text-4xl font-extrabold mt-3 text-primary">
+                                    824
+                                </h2>
+
+                                <p class="text-blue-600 text-sm mt-3 font-semibold">
+                                    +42 New Users
+                                </p>
+
+                            </div>
+
+                            <div class="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center">
+
+                                <i class="fas fa-users text-blue-600 text-2xl"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- CARD -->
+                    <div class="glass-card rounded-3xl p-6">
+
+                        <div class="flex justify-between items-start">
+
+                            <div>
+
+                                <p class="text-gray-500 text-sm">
+                                    Active Courses
+                                </p>
+
+                                <h2 class="text-4xl font-extrabold mt-3 text-primary">
+                                    42
+                                </h2>
+
+                                <p class="text-orange-500 text-sm mt-3 font-semibold">
+                                    8 New Courses
+                                </p>
+
+                            </div>
+
+                            <div class="w-16 h-16 rounded-2xl bg-orange-100 flex items-center justify-center">
+
+                                <i class="fas fa-book-open text-orange-600 text-2xl"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- CARD -->
+                    <div class="glass-card rounded-3xl p-6">
+
+                        <div class="flex justify-between items-start">
+
+                            <div>
+
+                                <p class="text-gray-500 text-sm">
+                                    Live Classes
+                                </p>
+
+                                <h2 class="text-4xl font-extrabold mt-3 text-primary">
+                                    12
+                                </h2>
+
+                                <p class="text-red-500 text-sm mt-3 font-semibold">
+                                    4 Live Now
+                                </p>
+
+                            </div>
+
+                            <div class="w-16 h-16 rounded-2xl bg-red-100 flex items-center justify-center">
+
+                                <i class="fas fa-video text-red-600 text-2xl"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- CHART + SIDE -->
+                <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+
+                    <!-- CHART -->
+                    <div class="xl:col-span-2 glass-card rounded-3xl p-6">
+
+                        <div class="flex items-center justify-between mb-8">
+
+                            <div>
+
+                                <h3 class="text-2xl font-bold text-primary">
+                                    Monthly Admissions
+                                </h3>
+
+                                <p class="text-gray-500 mt-1">
+                                    Student enrollment growth
+                                </p>
+
+                            </div>
+
+                            <select class="px-4 py-2 rounded-xl border border-gray-200 bg-white outline-none">
+
+                                <option>2026</option>
+
+                            </select>
+
+                        </div>
+
+                        <canvas id="admissionChart" height="120"></canvas>
+
+                    </div>
+
+                    <!-- RIGHT -->
+                    <div class="space-y-8">
+
+                        <!-- UPCOMING -->
+                        <div class="glass-card rounded-3xl p-6">
+
+                            <div class="flex items-center justify-between mb-6">
+
+                                <h3 class="text-xl font-bold text-primary">
+                                    Upcoming Classes
+                                </h3>
+
+                                <i class="fas fa-calendar-days text-gold"></i>
+
+                            </div>
+
+                            <div class="space-y-5">
+
+                                <!-- ITEM -->
+                                <div class="flex items-center justify-between bg-white p-4 rounded-2xl">
+
+                                    <div>
+
+                                        <h4 class="font-semibold text-primary">
+                                            Yoga Healing
+                                        </h4>
+
+                                        <p class="text-sm text-gray-500 mt-1">
+                                            10:00 AM
+                                        </p>
+
+                                    </div>
+
+                                    <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-bold">
+
+                                        Live
+
+                                    </span>
+
+                                </div>
+
+                                <!-- ITEM -->
+                                <div class="flex items-center justify-between bg-white p-4 rounded-2xl">
+
+                                    <div>
+
+                                        <h4 class="font-semibold text-primary">
+                                            Vedic Maths
+                                        </h4>
+
+                                        <p class="text-sm text-gray-500 mt-1">
+                                            2:00 PM
+                                        </p>
+
+                                    </div>
+
+                                    <span
+                                        class="bg-orange-100 text-orange-700 text-xs px-3 py-1 rounded-full font-bold">
+
+                                        Upcoming
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- PAYMENTS -->
+                        <div class="glass-card rounded-3xl p-6">
+
+                            <div class="flex items-center justify-between mb-6">
+
+                                <h3 class="text-xl font-bold text-primary">
+                                    Recent Payments
+                                </h3>
+
+                                <i class="fas fa-wallet text-green-600"></i>
+
+                            </div>
+
+                            <div class="space-y-5">
+
+                                <!-- PAYMENT -->
+                                <div class="flex items-center justify-between">
+
+                                    <div>
+
+                                        <h4 class="font-semibold text-primary">
+                                            Ananya Patel
+                                        </h4>
+
+                                        <p class="text-sm text-gray-500">
+                                            Yoga Mastery
+                                        </p>
+
+                                    </div>
+
+                                    <div class="text-right">
+
+                                        <h4 class="font-bold text-primary">
+                                            ₹1,999
+                                        </h4>
+
+                                        <p class="text-xs text-green-600">
+                                            Paid
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- PAYMENT -->
+                                <div class="flex items-center justify-between">
+
+                                    <div>
+
+                                        <h4 class="font-semibold text-primary">
+                                            Rahul Sharma
+                                        </h4>
+
+                                        <p class="text-sm text-gray-500">
+                                            Vedic Maths
+                                        </p>
+
+                                    </div>
+
+                                    <div class="text-right">
+
+                                        <h4 class="font-bold text-primary">
+                                            ₹999
+                                        </h4>
+
+                                        <p class="text-xs text-yellow-600">
+                                            Pending
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- RECENT ENROLLMENTS -->
+                <div class="glass-card rounded-3xl overflow-hidden">
+
+                    <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+
+                        <div>
+
+                            <h3 class="text-2xl font-bold text-primary">
+                                Recent Enrollments
+                            </h3>
+
+                            <p class="text-gray-500 mt-1">
+                                Latest joined students
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="overflow-x-auto">
+
+                        <table class="w-full min-w-[1000px]">
+
+                            <thead class="bg-primary text-white">
+
+                                <tr>
+
+                                    <th class="text-left px-6 py-5">
+                                        Student
+                                    </th>
+
+                                    <th class="text-left px-6 py-5">
+                                        Course
+                                    </th>
+
+                                    <th class="text-left px-6 py-5">
+                                        Payment
+                                    </th>
+
+                                    <th class="text-left px-6 py-5">
+                                        Joined Date
+                                    </th>
+
+                                    <th class="text-left px-6 py-5">
+                                        Status
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <!-- ROW -->
+                                <tr class="border-b border-gray-100 hover:bg-gold/5">
+
+                                    <td class="px-6 py-5">
+
+                                        <div class="flex items-center gap-4">
+
+                                            <img src="https://i.pravatar.cc/100?img=15"
+                                                class="w-14 h-14 rounded-2xl object-cover">
+
+                                            <div>
+
+                                                <h4 class="font-bold text-primary">
+                                                    Priya Menon
+                                                </h4>
+
+                                                <p class="text-sm text-gray-500">
+                                                    priya@gmail.com
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td class="px-6 py-5 font-semibold">
+                                        Carnatic Vocal
+                                    </td>
+
+                                    <td class="px-6 py-5 font-bold text-primary">
+                                        ₹1,499
+                                    </td>
+
+                                    <td class="px-6 py-5">
+                                        12 May 2026
+                                    </td>
+
+                                    <td class="px-6 py-5">
+
+                                        <span
+                                            class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-bold">
+
+                                            Active
+
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
         </main>
-    </div>
 
-    <!-- ============================ MODAL: ADD/EDIT COURSE ============================ -->
-    <div id="courseModal"
-        class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-backdrop transition-all"
-        style="background: rgba(0,0,0,0.6);">
-        <div class="bg-white rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-2xl">
-            <div class="sticky top-0 bg-white px-6 py-4 border-b flex justify-between items-center">
-                <h3 class="text-xl font-bold" id="modalTitle">Add New Course</h3><button id="closeModalBtn"
-                    class="text-gray-500 text-2xl">&times;</button>
-            </div>
-            <form id="courseForm" class="p-6 space-y-5">
-                <input type="hidden" id="courseId" value="">
-                <div><label class="block text-sm font-medium text-gray-700 mb-1">Course Title *</label><input
-                        type="text" id="courseTitle" required
-                        class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:ring-accent focus:border-accent">
-                </div>
-                <div><label class="block text-sm font-medium text-gray-700 mb-1">Category *</label>
-                    <div class="flex gap-2"><select id="courseCategory" required
-                            class="flex-1 border border-gray-300 rounded-xl px-4 py-2">
-                            <option value="">Select</option>
-                        </select><button type="button" id="addCategoryBtn"
-                            class="bg-primary/10 px-4 rounded-xl text-primary"><i class="fas fa-plus"></i></button>
-                    </div>
-                </div>
-                <div><label class="block text-sm font-medium text-gray-700 mb-1">Zoom Link (Course URL) *</label><input
-                        type="url" id="courseZoom" placeholder="https://zoom.us/..." required
-                        class="w-full border border-gray-300 rounded-xl px-4 py-2"></div>
-                <div><label class="block text-sm font-medium text-gray-700 mb-1">Class Date & Time *</label><input
-                        type="datetime-local" id="courseClassTime" required
-                        class="w-full border border-gray-300 rounded-xl px-4 py-2"></div>
-                <div><label class="block text-sm font-medium text-gray-700 mb-1">Duration (eg: 1 hour)</label><input
-                        type="text" id="courseDuration" placeholder="e.g., 1 hour, 2 sessions"
-                        class="w-full border border-gray-300 rounded-xl px-4 py-2"></div>
-                <div><label class="block text-sm font-medium text-gray-700 mb-1">Status</label><select id="courseStatus"
-                        class="w-full border border-gray-300 rounded-xl px-4 py-2">
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                    </select></div>
-                <div class="flex justify-end gap-3 pt-3"><button type="button" id="cancelModalBtn"
-                        class="px-5 py-2 border rounded-full">Cancel</button><button type="submit"
-                        class="btn-primary px-6 py-2 rounded-full text-white shadow">Save Course</button></div>
-            </form>
-        </div>
-    </div>
-
-    <!-- ADD CATEGORY MODAL -->
-    <div id="categoryModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-backdrop"
-        style="background: rgba(0,0,0,0.5);">
-        <div class="bg-white rounded-xl w-96 p-6">
-            <h3 class="text-xl font-bold mb-4">New Category</h3><input type="text" id="newCategoryName"
-                class="w-full border rounded-lg px-4 py-2 mb-4" placeholder="e.g., Vedic Maths">
-            <div class="flex justify-end gap-3"><button id="cancelCatBtn"
-                    class="px-4 py-2 border rounded-lg">Cancel</button><button id="saveCategoryBtn"
-                    class="bg-accent text-white px-5 py-2 rounded-lg">Add</button></div>
-        </div>
     </div>
 
     <script>
-        // ---------- DEFAULT DATA (with persistent localStorage) ----------
-        let categories = ['Health', 'Arts', 'Kids', 'Languages', 'Ladies Special', 'Music', 'Dance'];
-        let courses = [];
-        let students = [];
-        let staffCount = 8;  // Fixed staff number
 
-        // Helper: load or init data
-        function loadData() {
-            const storedCourses = localStorage.getItem('admin_courses');
-            const storedStudents = localStorage.getItem('admin_students');
-            const storedCategories = localStorage.getItem('admin_categories');
-            if (storedCategories) categories = JSON.parse(storedCategories);
-            if (storedCourses) {
-                courses = JSON.parse(storedCourses);
-            } else {
-                courses = [
-                    { id: 1, title: 'Yoga & Pranayama', category: 'Health', zoomLink: 'https://zoom.us/j/111222', classTime: '2026-06-10T09:00', duration: '1 hour', status: 'active' },
-                    { id: 2, title: 'Bharatanatyam Basics', category: 'Arts', zoomLink: 'https://zoom.us/j/333444', classTime: '2026-06-12T16:00', duration: '1.5 hours', status: 'active' },
-                    { id: 3, title: 'Chess Advanced', category: 'Kids', zoomLink: 'https://zoom.us/j/555666', classTime: '2026-06-15T17:30', duration: '1 hour', status: 'active' },
-                    { id: 4, title: 'Spoken English', category: 'Languages', zoomLink: 'https://zoom.us/j/777888', classTime: '2026-06-11T18:00', duration: '45 mins', status: 'active' },
-                    { id: 5, title: 'Saree Pleating Workshop', category: 'Ladies Special', zoomLink: 'https://zoom.us/j/999000', classTime: '2026-06-14T11:00', duration: '2 hours', status: 'active' }
-                ];
-            }
-            if (storedStudents) {
-                students = JSON.parse(storedStudents);
-            } else {
-                students = [
-                    { id: 101, name: 'Rahul Mehta', email: 'rahul@example.com', status: 'active', paidAmount: 9900 },
-                    { id: 102, name: 'Priya Sharma', email: 'priya@example.com', status: 'active', paidAmount: 24900 },
-                    { id: 103, name: 'Ananya Reddy', email: 'ananya@example.com', status: 'blocked', paidAmount: 9900 },
-                    { id: 104, name: 'Vikram Singh', email: 'vikram@example.com', status: 'active', paidAmount: 49900 },
-                    { id: 105, name: 'Kavitha Nair', email: 'kavitha@example.com', status: 'active', paidAmount: 24900 }
-                ];
-            }
-        }
-        function saveCourses() { localStorage.setItem('admin_courses', JSON.stringify(courses)); updateStatsAndUI(); }
-        function saveStudents() { localStorage.setItem('admin_students', JSON.stringify(students)); updateStatsAndUI(); }
-        function saveCategories() { localStorage.setItem('admin_categories', JSON.stringify(categories)); }
-
-        // Update stats cards, refresh tables
-        function updateStatsAndUI() {
-            document.getElementById('statStudents').innerText = students.length;
-            const totalPaid = students.reduce((sum, s) => sum + (s.paidAmount || 0), 0);
-            document.getElementById('statRevenue').innerText = totalPaid.toLocaleString('en-IN');
-            document.getElementById('statCourses').innerText = courses.filter(c => c.status === 'active').length;
-            document.getElementById('statStaff').innerText = staffCount;
-            renderCoursesTable();
-            renderStudentsTable();
-            // Also update charts data? charts are mock static but we refresh enrollment chart based on course categories
-            if (window.enrollmentChartInstance) updateEnrollmentChart();
-        }
-        function renderCoursesTable() {
-            const tbody = document.getElementById('coursesTableBody');
-            if (!tbody) return;
-            tbody.innerHTML = '';
-            courses.forEach(course => {
-                const row = tbody.insertRow();
-                row.innerHTML = `
-                    <td class="px-6 py-4 font-medium">${escapeHtml(course.title)}</td>
-                    <td class="px-6 py-4"><span class="px-2 py-1 bg-gray-100 rounded-full text-xs">${escapeHtml(course.category)}</span></td>
-                    <td class="px-6 py-4 max-w-xs truncate"><a href="${course.zoomLink}" target="_blank" class="text-accent hover:underline">${course.zoomLink.substring(0, 30)}...</a></td>
-                    <td class="px-6 py-4">${formatDateTime(course.classTime)}</td>
-                    <td class="px-6 py-4 space-x-2"><button class="editCourse text-blue-600 hover:text-blue-800" data-id="${course.id}"><i class="fas fa-edit"></i></button> <button class="deleteCourse text-red-500 hover:text-red-700" data-id="${course.id}"><i class="fas fa-trash-alt"></i></button></td>
-                `;
-            });
-            document.querySelectorAll('.editCourse').forEach(btn => btn.addEventListener('click', (e) => { const id = parseInt(btn.dataset.id); openEditCourse(id); }));
-            document.querySelectorAll('.deleteCourse').forEach(btn => btn.addEventListener('click', (e) => { if (confirm('Delete course?')) { const id = parseInt(btn.dataset.id); courses = courses.filter(c => c.id !== id); saveCourses(); renderCoursesTable(); updateStatsAndUI(); } }));
-        }
-        function renderStudentsTable() {
-            const tbody = document.getElementById('studentsTableBody');
-            if (!tbody) return;
-            tbody.innerHTML = '';
-            students.forEach(student => {
-                const row = tbody.insertRow();
-                row.innerHTML = `
-                    <td class="px-6 py-4 font-medium">${escapeHtml(student.name)}</td>
-                    <td class="px-6 py-4">${escapeHtml(student.email)}</td>
-                    <td class="px-6 py-4"><span class="px-2 py-1 rounded-full text-xs ${student.status === 'active' ? 'badge-active' : 'badge-blocked'}">${student.status === 'active' ? 'Active' : 'Blocked'}</span></td>
-                    <td class="px-6 py-4"><button class="toggleBlockBtn px-4 py-1 rounded-full text-white text-sm ${student.status === 'active' ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'}" data-id="${student.id}">${student.status === 'active' ? 'Block' : 'Unblock'}</button></td>
-                `;
-            });
-            document.querySelectorAll('.toggleBlockBtn').forEach(btn => btn.addEventListener('click', (e) => { const id = parseInt(btn.dataset.id); const student = students.find(s => s.id === id); if (student) { student.status = student.status === 'active' ? 'blocked' : 'active'; saveStudents(); renderStudentsTable(); updateStatsAndUI(); } }));
-        }
-        function formatDateTime(dt) { if (!dt) return 'TBD'; return dt.replace('T', ' | '); }
-        function escapeHtml(str) { return str.replace(/[&<>]/g, function (m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
-
-        // Category logic
-        function populateCategorySelect(selectEl, selectedCat) {
-            selectEl.innerHTML = '<option value="">Select Category</option>';
-            categories.forEach(cat => { const opt = document.createElement('option'); opt.value = cat; opt.textContent = cat; if (selectedCat === cat) opt.selected = true; selectEl.appendChild(opt); });
-        }
-        // Add category modal
-        const categoryModal = document.getElementById('categoryModal');
-        function openCategoryModal(callback) { categoryModal.classList.remove('hidden'); categoryModal.style.display = 'flex'; window.categoryCallback = callback; }
-        document.getElementById('addCategoryBtn')?.addEventListener('click', () => { openCategoryModal(); });
-        document.getElementById('saveCategoryBtn')?.addEventListener('click', () => { const newCat = document.getElementById('newCategoryName').value.trim(); if (newCat && !categories.includes(newCat)) { categories.push(newCat); saveCategories(); const catSelect = document.getElementById('courseCategory'); populateCategorySelect(catSelect, newCat); if (window.categoryCallback) window.categoryCallback(newCat); } categoryModal.classList.add('hidden'); categoryModal.style.display = 'none'; document.getElementById('newCategoryName').value = ''; });
-        document.getElementById('cancelCatBtn')?.addEventListener('click', () => { categoryModal.classList.add('hidden'); categoryModal.style.display = 'none'; });
-        // Course Modal logic
-        const courseModal = document.getElementById('courseModal');
-        let editMode = false, editId = null;
-        function openAddCourse() { editMode = false; editId = null; document.getElementById('modalTitle').innerText = 'Add New Course'; document.getElementById('courseForm').reset(); document.getElementById('courseId').value = ''; populateCategorySelect(document.getElementById('courseCategory'), ''); courseModal.classList.remove('hidden'); courseModal.style.display = 'flex'; }
-        function openEditCourse(id) { const course = courses.find(c => c.id === id); if (!course) return; editMode = true; editId = id; document.getElementById('modalTitle').innerText = 'Edit Course'; document.getElementById('courseId').value = course.id; document.getElementById('courseTitle').value = course.title; populateCategorySelect(document.getElementById('courseCategory'), course.category); document.getElementById('courseZoom').value = course.zoomLink; document.getElementById('courseClassTime').value = course.classTime || ''; document.getElementById('courseDuration').value = course.duration || ''; document.getElementById('courseStatus').value = course.status; courseModal.classList.remove('hidden'); courseModal.style.display = 'flex'; }
-        function closeModal() { courseModal.classList.add('hidden'); courseModal.style.display = 'none'; }
-        document.getElementById('addCourseBtn')?.addEventListener('click', openAddCourse);
-        document.getElementById('closeModalBtn')?.addEventListener('click', closeModal);
-        document.getElementById('cancelModalBtn')?.addEventListener('click', closeModal);
-        document.getElementById('courseForm')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const title = document.getElementById('courseTitle').value.trim();
-            const category = document.getElementById('courseCategory').value;
-            const zoomLink = document.getElementById('courseZoom').value.trim();
-            const classTime = document.getElementById('courseClassTime').value;
-            const duration = document.getElementById('courseDuration').value;
-            const status = document.getElementById('courseStatus').value;
-            if (!title || !category || !zoomLink || !classTime) { alert('Please fill required fields: Title, Category, Zoom Link and Class Time'); return; }
-            if (editMode) {
-                const index = courses.findIndex(c => c.id === editId);
-                if (index !== -1) { courses[index] = { ...courses[index], title, category, zoomLink, classTime, duration, status }; }
-            } else {
-                const newId = courses.length > 0 ? Math.max(...courses.map(c => c.id)) + 1 : 100;
-                courses.push({ id: newId, title, category, zoomLink, classTime, duration, status });
-            }
-            saveCourses();
-            closeModal();
-            renderCoursesTable();
-            updateStatsAndUI();
-        });
-        // Charts (static but show dynamic categories count)
-        let revenueChart, enrollmentChartInstance;
-        function initCharts() {
-            const ctx = document.getElementById('revenueChart').getContext('2d');
-            revenueChart = new Chart(ctx, { type: 'bar', data: { labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], datasets: [{ label: 'Revenue (₹)', data: [185000, 210000, 245000, 310000, 398000, 475000], backgroundColor: '#F77F00', borderRadius: 8 }] }, options: { responsive: true, maintainAspectRatio: true } });
-            updateEnrollmentChart();
-        }
-        function updateEnrollmentChart() {
-            const catCount = {};
-            courses.forEach(c => { if (c.status === 'active') catCount[c.category] = (catCount[c.category] || 0) + 1; });
-            const labels = Object.keys(catCount).slice(0, 5);
-            const data = labels.map(l => catCount[l]);
-            if (enrollmentChartInstance) enrollmentChartInstance.destroy();
-            const ctx2 = document.getElementById('enrollmentChart').getContext('2d');
-            enrollmentChartInstance = new Chart(ctx2, { type: 'doughnut', data: { labels: labels, datasets: [{ data: data, backgroundColor: ['#1B4332', '#F77F00', '#C9A96E', '#2D6A4F', '#EFE6DD'] }] }, options: { responsive: true, plugins: { legend: { position: 'bottom' } } } });
-        }
-
-        // TABS Logic
-        const sections = { dashboard: document.getElementById('dashboardSection'), courses: document.getElementById('coursesSection'), students: document.getElementById('studentsSection') };
-        function showTab(tabId) { Object.keys(sections).forEach(id => { if (sections[id]) sections[id].classList.add('hidden'); }); if (sections[tabId]) sections[tabId].classList.remove('hidden'); }
-        document.querySelectorAll('.nav-item').forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); const tab = link.dataset.tab; if (tab) showTab(tab); if (window.innerWidth < 768) { document.getElementById('sidebar').classList.add('-translate-x-full'); document.getElementById('sidebarOverlay').classList.add('hidden'); } }); });
-        // Mobile sidebar
+        // SIDEBAR
+        const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('sidebarOverlay');
-        document.getElementById('mobileMenuToggle').addEventListener('click', () => { sidebar.classList.toggle('-translate-x-full'); overlay.classList.toggle('hidden'); });
-        overlay.addEventListener('click', () => { sidebar.classList.add('-translate-x-full'); overlay.classList.add('hidden'); });
-        // On load
-        loadData();
-        initCharts();
-        updateStatsAndUI();
-        showTab('dashboard');
-        // Close category modal on outside click (simple)
-        window.onclick = function (event) { if (event.target === categoryModal) { categoryModal.classList.add('hidden'); categoryModal.style.display = 'none'; } if (event.target === courseModal) { closeModal(); } }
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+
+        // CHART
+        const ctx = document.getElementById('admissionChart');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [
+                    'Jan',
+                    'Feb',
+                    'Mar',
+                    'Apr',
+                    'May',
+                    'Jun',
+                    'Jul',
+                    'Aug',
+                    'Sep',
+                    'Oct',
+                    'Nov',
+                    'Dec'
+                ],
+                datasets: [{
+                    label: 'Admissions',
+                    data: [20, 35, 42, 58, 75, 82, 96, 110, 120, 132, 140, 155],
+                    borderColor: '#D4AF37',
+                    backgroundColor: 'rgba(212,175,55,0.15)',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 3,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#F28C28'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
     </script>
+
 </body>
+
 </html>
