@@ -1,0 +1,1 @@
+import{i as e,n as t}from"./authService-D_2hrobR.js";var n=()=>t(),r=t=>e(t);export{n,r as t};

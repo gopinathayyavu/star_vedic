@@ -1,0 +1,42 @@
+import{H as e,K as t,U as n}from"./firebase-BMmhno40.js";import{i as r}from"./index-2qX9Z7y3.js";import{t as i}from"./studentAuth-Dc-JO0M5.js";var a=t(n(),1),o=e();function s(){let[e,t]=(0,a.useState)(``),[n,s]=(0,a.useState)(!1),[c,l]=(0,a.useState)(``),[u,d]=(0,a.useState)(``);return(0,o.jsx)(`div`,{className:`min-h-screen bg-[#FFF9F0] flex items-center justify-center px-4`,children:(0,o.jsxs)(`div`,{className:`bg-white rounded-3xl shadow-xl w-full max-w-md p-8`,children:[(0,o.jsxs)(`div`,{className:`text-center mb-8`,children:[(0,o.jsx)(`h1`,{className:`text-4xl font-bold text-[#0F2C23]`,children:`Forgot Password`}),(0,o.jsx)(`p`,{className:`text-gray-500 mt-2`,children:`Enter your email to receive a reset link`})]}),(0,o.jsxs)(`form`,{onSubmit:async t=>{t.preventDefault(),l(``),d(``);try{s(!0),await i(e),d(`Password reset link has been sent to your email.`)}catch(e){switch(console.log(e),e.code){case`auth/not-authorized`:l(`No registered student account found with this email.`);break;case`auth/email-not-verified`:l(`Your email is not verified yet. Please verify your email and try again.`);break;case`auth/invalid-email`:l(`Please enter a valid email address.`);break;default:l(`Unable to send reset email. Please try again.`)}}finally{s(!1)}},className:`space-y-4`,children:[(0,o.jsx)(`input`,{type:`email`,placeholder:`Email Address`,value:e,onChange:e=>t(e.target.value),className:`\r
+                            w-full\r
+                            border\r
+                            rounded-xl\r
+                            p-4\r
+                            focus:outline-none\r
+                            focus:ring-2\r
+                            focus:ring-orange-400\r
+                        `,required:!0}),c&&(0,o.jsx)(`div`,{className:`\r
+                                    bg-red-50\r
+                                    border\r
+                                    border-red-300\r
+                                    text-red-700\r
+                                    px-4\r
+                                    py-3\r
+                                    rounded-xl\r
+                                    text-sm\r
+                                `,children:c}),u&&(0,o.jsx)(`div`,{className:`\r
+                                    bg-green-50\r
+                                    border\r
+                                    border-green-300\r
+                                    text-green-700\r
+                                    px-4\r
+                                    py-3\r
+                                    rounded-xl\r
+                                    text-sm\r
+                                `,children:u}),(0,o.jsx)(`button`,{type:`submit`,disabled:n,className:`\r
+                            w-full\r
+                            bg-gradient-to-r\r
+                            from-yellow-500\r
+                            to-orange-500\r
+                            text-black\r
+                            py-4\r
+                            rounded-xl\r
+                            font-bold\r
+                            hover:opacity-90\r
+                            transition\r
+                        `,children:n?`Sending...`:`Send Reset Link`})]}),(0,o.jsx)(`div`,{className:`text-center mt-6`,children:(0,o.jsx)(r,{to:`/signin`,className:`\r
+                            text-orange-600\r
+                            font-semibold\r
+                            hover:underline\r
+                        `,children:`← Back to Login`})})]})})}export{s as default};

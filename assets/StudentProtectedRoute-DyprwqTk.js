@@ -1,0 +1,55 @@
+import{H as e}from"./firebase-BMmhno40.js";import{o as t,r as n,s as r}from"./index-2qX9Z7y3.js";var i=e();function a({children:e}){let{currentUser:a,userData:o,loading:s}=n(),c=r();return s?(0,i.jsx)(`div`,{className:`\r
+                    min-h-screen\r
+                    flex\r
+                    items-center\r
+                    justify-center\r
+                    bg-[#FFF9F0]\r
+                `,children:(0,i.jsx)(`div`,{className:`\r
+                        w-12\r
+                        h-12\r
+                        rounded-full\r
+                        border-4\r
+                        border-orange-400\r
+                        border-t-transparent\r
+                        animate-spin\r
+                    `})}):a?o?o.role===`student`?o.accountStatus===`blocked`?(0,i.jsx)(`div`,{className:`\r
+                    min-h-screen\r
+                    bg-[#FFF9F0]\r
+                    flex\r
+                    items-center\r
+                    justify-center\r
+                    px-6\r
+                `,children:(0,i.jsxs)(`div`,{className:`\r
+                        max-w-md\r
+                        w-full\r
+                        bg-white\r
+                        rounded-3xl\r
+                        shadow-xl\r
+                        p-8\r
+                        text-center\r
+                    `,children:[(0,i.jsx)(`div`,{className:`\r
+                            w-16\r
+                            h-16\r
+                            mx-auto\r
+                            rounded-full\r
+                            bg-red-100\r
+                            flex\r
+                            items-center\r
+                            justify-center\r
+                            text-3xl\r
+                        `,children:`🔒`}),(0,i.jsx)(`h1`,{className:`\r
+                            text-2xl\r
+                            font-bold\r
+                            text-[#0F2C23]\r
+                            mt-5\r
+                        `,children:`Account Blocked`}),(0,i.jsx)(`p`,{className:`\r
+                            text-gray-500\r
+                            mt-3\r
+                            leading-relaxed\r
+                        `,children:`Your Star Vedic Academy account has been blocked by the administrator. Please contact the academy for assistance.`})]})}):e:(0,i.jsx)(t,{to:`/`,replace:!0}):(0,i.jsx)(`div`,{className:`\r
+                    min-h-screen\r
+                    flex\r
+                    items-center\r
+                    justify-center\r
+                    text-gray-600\r
+                `,children:`Loading profile...`}):(0,i.jsx)(t,{to:`/signin`,replace:!0,state:{from:c}})}export{a as default};

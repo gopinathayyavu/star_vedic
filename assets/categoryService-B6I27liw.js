@@ -1,0 +1,1 @@
+import{_ as e,m as t,n,u as r,y as i}from"./firebase-BMmhno40.js";var a=async()=>(await r(t(i(n,`categories`),e(`status`,`==`,!0)))).docs.map(e=>({id:e.id,...e.data()}));export{a as t};

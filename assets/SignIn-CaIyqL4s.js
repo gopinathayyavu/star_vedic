@@ -1,0 +1,53 @@
+import{H as e,K as t,U as n}from"./firebase-BMmhno40.js";import{c as r,i,r as a}from"./index-2qX9Z7y3.js";import{_ as o,g as s}from"./fa-BMaomVsf.js";import{t as c}from"./authService-D_2hrobR.js";var l=t(n(),1),u=e();function d(){let e=r(),{refreshUser:t}=a(),[n,d]=(0,l.useState)(``),[f,p]=(0,l.useState)(``),[m,h]=(0,l.useState)(!1),[g,_]=(0,l.useState)(``),[v,y]=(0,l.useState)(!1);return(0,u.jsx)(`div`,{className:`min-h-screen bg-[#FFF9F0] flex items-center justify-center px-4`,children:(0,u.jsxs)(`div`,{className:`bg-white rounded-3xl shadow-xl w-full max-w-md p-8`,children:[(0,u.jsxs)(`div`,{className:`text-center mb-8`,children:[(0,u.jsx)(`h1`,{className:`text-4xl font-bold text-[#0F2C23]`,children:`Welcome Back`}),(0,u.jsx)(`p`,{className:`text-gray-500 mt-2`,children:`Login to your Star Vedik account`})]}),(0,u.jsxs)(`form`,{onSubmit:async r=>{if(r.preventDefault(),!m){h(!0),_(``);try{await c(n.trim(),f,`student`),e(`/`,{replace:!0}),t()}catch(e){switch(console.log(`Login Error :`,e),e.code){case`auth/invalid-credential`:_(`Invalid email or password.`);break;case`auth/user-not-found`:_(`No account found with this email.`);break;case`auth/wrong-password`:_(`Incorrect password.`);break;case`auth/invalid-email`:_(`Invalid email address.`);break;case`auth/user-disabled`:_(`This account has been disabled.`);break;case`auth/too-many-requests`:_(`Too many attempts. Please try again later.`);break;default:_(e.message||`Unable to login.`)}}finally{h(!1)}}},className:`space-y-5`,children:[(0,u.jsx)(`input`,{type:`email`,value:n,onChange:e=>d(e.target.value),placeholder:`Email Address`,className:`\r
+                            w-full\r
+                            border\r
+                            rounded-xl\r
+                            p-4\r
+                            focus:outline-none\r
+                            focus:ring-2\r
+                            focus:ring-orange-400\r
+                        `,required:!0}),(0,u.jsxs)(`div`,{className:`relative`,children:[(0,u.jsx)(`input`,{type:v?`text`:`password`,value:f,onChange:e=>p(e.target.value),placeholder:`Password`,className:`\r
+                                w-full\r
+                                border\r
+                                rounded-xl\r
+                                p-4\r
+                                pr-12\r
+                                focus:outline-none\r
+                                focus:ring-2\r
+                                focus:ring-orange-400\r
+                            `,required:!0}),(0,u.jsx)(`button`,{type:`button`,onClick:()=>y(!v),className:`\r
+                                absolute\r
+                                right-4\r
+                                top-1/2\r
+                                -translate-y-1/2\r
+                                text-gray-500\r
+                            `,children:v?(0,u.jsx)(o,{}):(0,u.jsx)(s,{})})]}),(0,u.jsx)(`div`,{className:`text-right`,children:(0,u.jsx)(i,{to:`/forgot-password`,className:`\r
+                                text-orange-600\r
+                                text-sm\r
+                                hover:underline\r
+                            `,children:`Forgot Password?`})}),g&&(0,u.jsx)(`div`,{className:`\r
+                                bg-red-50\r
+                                border\r
+                                border-red-300\r
+                                text-red-700\r
+                                rounded-xl\r
+                                px-4\r
+                                py-3\r
+                                text-sm\r
+                            `,children:g}),(0,u.jsx)(`button`,{type:`submit`,disabled:m,className:`\r
+                            w-full\r
+                            bg-gradient-to-r\r
+                            from-yellow-500\r
+                            to-orange-500\r
+                            py-4\r
+                            rounded-xl\r
+                            font-bold\r
+                            hover:opacity-90\r
+                            transition\r
+                            disabled:opacity-50\r
+                        `,children:m?`Signing In...`:`Login`})]}),(0,u.jsxs)(`p`,{className:`text-center mt-6 text-gray-600`,children:[`Don't have an account?`,(0,u.jsx)(i,{to:`/signup`,className:`\r
+                            text-orange-600\r
+                            ml-2\r
+                            font-semibold\r
+                            hover:underline\r
+                        `,children:`Create Account`})]})]})})}export{d as default};

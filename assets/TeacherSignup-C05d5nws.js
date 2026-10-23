@@ -1,0 +1,23 @@
+import{C as e,H as t,K as n,U as r,b as i,h as a,n as o,t as s}from"./firebase-BMmhno40.js";var c=n(r(),1),l=t();function u(){let[t,n]=(0,c.useState)(!1),[r,u]=(0,c.useState)(!1),[d,f]=(0,c.useState)(``),[p,m]=(0,c.useState)(``),[h,g]=(0,c.useState)({name:``,email:``,phone:``,qualification:``,specialization:``,password:``}),_=e=>{g({...h,[e.target.name]:e.target.value})};return(0,l.jsx)(`div`,{className:`min-h-screen bg-[#F8F6F2] flex items-center justify-center p-6`,children:(0,l.jsxs)(`div`,{className:`\r
+                bg-white/90\r
+                backdrop-blur-xl\r
+                rounded-[32px]\r
+                shadow-xl\r
+                border\r
+                border-white\r
+                p-8\r
+                w-full\r
+                max-w-4xl\r
+                `,children:[(0,l.jsxs)(`div`,{className:`text-center mb-8`,children:[(0,l.jsx)(`div`,{className:`w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4`,children:(0,l.jsx)(`span`,{className:`text-4xl text-[#0F2C23]`,children:`ॐ`})}),(0,l.jsx)(`h1`,{className:`text-4xl font-bold text-[#0F2C23]`,children:`STAR VEDIK`}),(0,l.jsx)(`p`,{className:`text-gray-500 mt-2`,children:`Teacher Registration Portal`})]}),d&&(0,l.jsx)(`div`,{className:`mb-6 p-4 rounded-2xl border text-sm font-medium ${p===`success`?`bg-green-50 border-green-200 text-green-700`:`bg-red-50 border-red-200 text-red-700`}`,children:d}),(0,l.jsxs)(`form`,{onSubmit:async t=>{t.preventDefault();try{n(!0);let t=(await e(s,h.email,h.password)).user.uid;await a(i(o,`users`,t),{uid:t,role:`teacher`,status:`pending`}),await a(i(o,`teachers`,t),{uid:t,name:h.name,email:h.email,phone:h.phone,qualification:h.qualification,specialization:h.specialization,status:`pending`,createdAt:new Date}),m(`success`),f(`Registration submitted successfully. Please wait for admin approval.`),g({name:``,email:``,phone:``,qualification:``,specialization:``,password:``}),setTimeout(()=>{f(``)},5e3)}catch(e){let t=`Something went wrong. Please try again.`;e.code===`auth/email-already-in-use`&&(t=`This email is already registered.`),e.code===`auth/invalid-email`&&(t=`Please enter a valid email address.`),e.code===`auth/weak-password`&&(t=`Password must be at least 6 characters.`),m(`error`),f(t),setTimeout(()=>{f(``)},5e3)}n(!1)},children:[(0,l.jsxs)(`div`,{className:`grid grid-cols-1 md:grid-cols-2 gap-5`,children:[(0,l.jsx)(`input`,{type:`text`,name:`name`,placeholder:`Full Name`,value:h.name,onChange:_,required:!0,className:`w-full border border-gray-200 p-4 rounded-xl outline-none focus:border-yellow-500`}),(0,l.jsx)(`input`,{type:`email`,name:`email`,placeholder:`Email Address`,value:h.email,onChange:_,required:!0,className:`w-full border border-gray-200 p-4 rounded-xl outline-none focus:border-yellow-500`}),(0,l.jsx)(`input`,{type:`text`,name:`phone`,placeholder:`Phone Number`,value:h.phone,onChange:_,required:!0,className:`w-full border border-gray-200 p-4 rounded-xl outline-none focus:border-yellow-500`}),(0,l.jsx)(`input`,{type:`text`,name:`qualification`,placeholder:`Qualification`,value:h.qualification,onChange:_,required:!0,className:`w-full border border-gray-200 p-4 rounded-xl outline-none focus:border-yellow-500`}),(0,l.jsx)(`input`,{type:`text`,name:`specialization`,placeholder:`Specialization`,value:h.specialization,onChange:_,required:!0,className:`w-full border border-gray-200 p-4 rounded-xl outline-none focus:border-yellow-500`}),(0,l.jsxs)(`div`,{className:`relative`,children:[(0,l.jsx)(`input`,{type:r?`text`:`password`,name:`password`,placeholder:`Create Password`,value:h.password,onChange:_,required:!0,className:`w-full border border-gray-200 p-4 rounded-xl outline-none focus:border-yellow-500 pr-12`}),(0,l.jsx)(`button`,{type:`button`,onClick:()=>u(!r),className:`absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#273B09]`,children:(0,l.jsx)(`i`,{className:`fas ${r?`fa-eye-slash`:`fa-eye`}`})})]})]}),(0,l.jsx)(`button`,{type:`submit`,disabled:t,className:`\r
+                        w-full\r
+                        mt-6\r
+                        bg-[#273B09]\r
+                        hover:bg-[#1f2f07]\r
+                        text-white\r
+                        py-4\r
+                        rounded-xl\r
+                        font-semibold\r
+                        transition-all\r
+                        duration-300\r
+                        disabled:opacity-50\r
+                        `,children:t?`Creating Account...`:`Register as Teacher`})]}),(0,l.jsx)(`div`,{className:`mt-6 text-center text-sm text-gray-500`,children:`After registration, your profile will be reviewed by the Star Vedik Administration Team.`})]})})}export{u as default};
